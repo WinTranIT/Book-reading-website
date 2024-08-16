@@ -1,0 +1,151 @@
+.containerr{
+    display: block;
+    position: absolute;
+}
+.container_logo{
+    display: flex;
+    align-items: center;
+    margin:4vh;
+}
+.container_logo img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.container_logo h3{
+    font-weight: bold;
+    margin-left: 10px;
+    font-size: 18px;
+}
+.container_form{
+    position: absolute;
+    width: 741px;
+    height: 459px;
+    top: 83px;
+    left: 406px;
+}
+.container_form > h5{
+    position: absolute;
+    bottom: -110px;
+    left: 275px;
+}
+.signup{
+    color: #0F9BF2;
+}
+.signup:hover{
+    color: #1376b7;
+    cursor:pointer;
+}
+.form{
+    margin-top: 1%;
+    border-radius: 13px;
+    height: 110%;
+    background-color: #ACCAF2;
+}
+
+.a1 {
+    position: absolute;
+    width: 370px;
+    height: 260px;
+    top: 435px;
+}
+.a2{
+    position: relative;
+    width: 555px;
+    height: 395px;
+    top: 164px;
+    left: 964px;
+}
+.welcome{
+    font-family: system-ui;
+    text-align: center;
+    width: 230px;
+    top: 60px;
+    left: 270px;
+    position: absolute;
+}
+.welcome h2{
+    font-size: 23px;
+    font-weight: 700;
+    line-height: 30px;
+}
+.welcome h3{
+    font-size: 18px;
+}
+.container_username{
+    position: absolute;
+    left: 140px;
+    top: 140px;
+    width: 486px;
+    background-color: white;
+    padding: 10px 15px 10px 24px;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+}
+.input_username, .input_password{
+    margin-left: 40px;
+    outline: none;
+}
+.container_password{
+    position: absolute;
+    z-index: 2;
+    left: 140px;
+    top: 210px;
+    width: 486px;
+    background-color: white;
+    padding: 10px 15px 10px 24px;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+}
+.container_repassword {
+    position: absolute;
+    z-index: 2;
+    left: 140px;
+    top: 284px;
+    width: 486px;
+    background-color: white;
+    padding: 10px 15px 10px 24px;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+}
+.input_password{
+    margin-right: 136px;
+}
+.submit{
+    position: absolute;
+    bottom: 70px;
+    background-color: #ECF2D5;
+    padding: 5px 25px;
+    border-radius: 25px;
+    left: 330px;
+}
+.a3{
+    position: absolute;
+    left: 533px;
+    top: -144px;
+}
+.a4{
+    position: absolute;
+    left: -12px;
+    top: 246px;
+}
+
+.label{
+    position: absolute;
+    bottom: 20px;
+    font-size: 17px;
+    color: white;
+    left: 348px;
+}
+.gafx{
+    position: absolute;
+    display: flex;
+    bottom: -24px;
+    left: 298px;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    width: 170px;
+}

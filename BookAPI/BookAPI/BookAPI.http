@@ -1,0 +1,14 @@
+@BookAPI_HostAddress = https://localhost:7092
+
+GET {{BookAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+GET {{BookAPI_HostAddress}}/weatherforecast
+
+###
+
+GET {{BookAPI_HostAddress}}/api/book
+
+###
