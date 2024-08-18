@@ -2722,19 +2722,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\QUOC THANG\\.nuget\\packages\\": {}
+    "C:\\Users\\TUAN\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\dotnet\\project_dotnet\\BookAPI\\BookAPI\\BookAPI.csproj",
+      "projectUniqueName": "D:\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj",
       "projectName": "BookAPI",
-      "projectPath": "E:\\dotnet\\project_dotnet\\BookAPI\\BookAPI\\BookAPI.csproj",
-      "packagesPath": "C:\\Users\\QUOC THANG\\.nuget\\packages\\",
-      "outputPath": "E:\\dotnet\\project_dotnet\\BookAPI\\BookAPI\\obj\\",
+      "projectPath": "D:\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj",
+      "packagesPath": "C:\\Users\\TUAN\\.nuget\\packages\\",
+      "outputPath": "D:\\Book-reading-website\\BookAPI\\BookAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\QUOC THANG\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TUAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2743,8 +2743,7 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://packagesource": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
