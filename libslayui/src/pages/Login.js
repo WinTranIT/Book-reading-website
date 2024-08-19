@@ -9,6 +9,8 @@ import a3 from '../imgs/24122050_6904354 1.png';
 import a4 from '../imgs/24122051_6778944 1.png'
 import '../css/login.css'
 import {login} from "../services/apiService";
+import {useNavigate} from "react-router-dom";
+
 
 function Login() {
     const [eyeTikTak, setEyeTikTak] = useState(true);
@@ -19,6 +21,8 @@ function Login() {
     // lưu trữ trạng thái thông tin người dùng nhập vào form login
     const [email, setEmail] = useState('');
     const[password, setPassword] = useState('');
+    // khởi tạo navigate
+    const navigate = useNavigate();
     // tạo hàm xử lí sự kiện submit
     const handleSubmit = async (e) => {
         e.preventDefault(); // Thêm dòng này
@@ -28,7 +32,11 @@ function Login() {
             const response = await login(loginData);
             if (response.status === 200) {
                 alert("Login successful: " + response.data.email);
-                // Chuyển hướng hoặc lưu session ở đây
+                //  lưu session ở đây
+                sessionStorage.getItem(response.data)
+                // chuyển hướng trang home
+                navigate("/contact");
+
             } else {
                 alert("Login failed. Please try again.");
             }

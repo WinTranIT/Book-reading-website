@@ -1,22 +1,35 @@
+// src/App.js
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import Login from "./pages/login";
-import Signup from "./pages/signup";
-import Header from "./components/header";
-import ContactForm from "./components/ContactForm";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
-import Footer from "./components/footer";
+import Layout from "./components/Layout";
+
 function App() {
-  return (
-    <div className="App">
-      {/*<Header/>*/}
-      {/*<Login/>*/}
-      {/* <Signup/>*/}
-        <ContactUsPage/>
-      {/*  <Login/>*/}
-      {/*  <Signup/>*/}
-      {/*  <Footer/>*/}
-    </div>
-  );
+    return (
+        <Router>
+            <div className="App">
+                <Routes>
+                    {/* Routes without Layout */}
+                    <Route path="/" element={<Login />} />
+                    <Route path="/signup" element={<Signup />} />
+
+                    {/* Routes with Layout */}
+                    <Route
+                        path="/contact"
+                        element={
+                            <Layout>
+                                <ContactUsPage />
+                            </Layout>
+                        }
+                    />
+                    {/* Add other routes that should have Header and Footer */}
+                </Routes>
+            </div>
+        </Router>
+    );
 }
 
 export default App;
