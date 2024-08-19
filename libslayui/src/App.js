@@ -5,16 +5,18 @@ import Header from "./components/header";
 import ContactForm from "./components/ContactForm";
 import ContactUsPage from "./pages/ContactUsPage";
 import Footer from "./components/footer";
+import Profile from "./pages/profile";
 function App() {
   return (
     <div className="App">
-      {/*<Header/>*/}
+      <Header/>
       {/*<Login/>*/}
       {/* <Signup/>*/}
-        <ContactUsPage/>
+      {/*  <ContactUsPage/>*/}
+        <Profile/>
       {/*  <Login/>*/}
       {/*  <Signup/>*/}
-        <Footer/>
+      {/*  <Footer/>*/}
     </div>
   );
 }
