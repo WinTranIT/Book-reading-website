@@ -9,8 +9,9 @@ import a2 from '../imgs/Group 15.png';
 import a3 from '../imgs/24122050_6904354 1.png';
 import a4 from '../imgs/24122051_6778944 1.png';
 import '../css/signup.css';
+import {useNavigate} from "react-router-dom";
 
-function SignUp() {
+function Signup() {
     const [eyeTikTak, setEyeTikTak] = useState(true);
     const togglePasswordVisibility = () => {
         setEyeTikTak(!eyeTikTak);
@@ -25,6 +26,7 @@ function SignUp() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [message, setMessage] = useState('');
 
+    const navigate = useNavigate();
     // tạo hàm
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -39,6 +41,10 @@ function SignUp() {
             const response = await register(registerData);
             if (response.status === 200) {
                 setMessage("User Register Successfully");
+                //  lưu session ở đây
+                sessionStorage.getItem(response.data)
+                // chuyển hướng trang home
+                navigate("/contact");
             }
         } catch (error) {
             if (error.status === 400) {
@@ -131,4 +137,4 @@ function SignUp() {
     );
 }
 
-export default SignUp;
+export default Signup;
