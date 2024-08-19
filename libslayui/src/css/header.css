@@ -1,17 +1,30 @@
-.container_logos{
+.container_logoslay{
     display: flex;
     align-items: center;
     margin: 15px;
 }
-.container_logos img{
+.container_logoslay img{
     border-radius: 50%;
-    width: 6%;
+    width: 14%;
 }
-.container_logos h3{
+.container_logoslay h3{
     font-size: 26px;
     margin-left: 15px;
     font-weight: 800;
 }
 .avatar{
 
+}
+
+.hover-underline::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #FFA146;
+    transition: width 0.3s;
+}
+.hover-underline:hover::after {
+    color:#265073;
+    width: 100%;
 }

@@ -36,8 +36,22 @@ namespace BookAPI.Controllers
             // bởi DbContext vào cơ sở dữ liệu
             await _context.SaveChangesAsync();
 
-            return Ok("User Register Successfully");
+            return Ok(user);
         }
-
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] RegisterModel model)
+        {
+            // check email co trong csdl k 
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null)
+            {
+                return BadRequest("Email not valid");
+            }
+            if (user.Password == model.Password)
+            {
+                return Ok(user);
+            }
+            return Ok("Password not valid");
+        }
     }
 }

@@ -1,0 +1,9 @@
+.gradient-button {
+    background: linear-gradient(270deg, #8e44ad, #e74c3c, #f39c12, #4a9eda, #265073);
+    background-size: 300% 300%;
+    transition: background-position 0.5s ease;
+}
+
+.gradient-button:hover {
+    background-position: right center;
+}
