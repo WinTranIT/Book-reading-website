@@ -4,6 +4,9 @@ import Signup from "./pages/signup";
 import Header from "./components/header";
 import ContactForm from "./components/ContactForm";
 import ContactUsPage from "./pages/ContactUsPage";
+import ReadingChallenge from "./components/ReadingChallenge";
+import TrendingBooks from "./components/TrendingBooks";
+import BookCard from "./components/BookCard";
 
 function App() {
   return (
@@ -11,7 +14,10 @@ function App() {
       {/*<Header/>*/}
       {/*<Login/>*/}
       {/* <Signup/>*/}
-        <ContactUsPage/>
+      {/*  <ContactUsPage/>*/}
+      {/*  <ReadingChallenge/>*/}
+      {/*<TrendingBooks/>*/}
+      <BookCard/>
     </div>
   );
 }
