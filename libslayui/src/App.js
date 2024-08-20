@@ -9,6 +9,9 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import BookList from "./components/BookList";
 import AdminPage from "./pages/AdminPage";
+import Profile from "./pages/profile";
+import SearchBook from "./pages/SearchBook";
+
 
 function App() {
     return (
@@ -16,7 +19,7 @@ function App() {
             <div className="App">
                 <Routes>
                     {/* Routes without Layout */}
-                    <Route path="/login" element={<Login />} />
+                    <Route path="/" element={<Login />} />
                     <Route path="/signup" element={<Signup />} />
 
                     {/* Routes with Layout */}
@@ -37,6 +40,7 @@ function App() {
                             </Layout>
                         }
                     />
+
                     <Route path="/admin"
                     element={
                         <Layout>
@@ -45,6 +49,23 @@ function App() {
                     }/>
 
                     {/* Add other routes that should have Header and Footer */}
+                    {/* Routes with Layout */}
+                    <Route
+                        path="/profile"
+                        element={
+                            <Layout>
+                                <Profile />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/search"
+                        element={
+                            <Layout>
+                                <SearchBook />
+                            </Layout>
+                        }
+                    />
                 </Routes>
 
             </div>

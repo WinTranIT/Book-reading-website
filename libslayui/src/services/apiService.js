@@ -19,3 +19,31 @@ export const login = async (loginData) => {
         throw error;
     }
 }
+export const getBooks = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/Book`);
+        return response;
+    }catch(error){
+        throw error;
+    }
+}
+export const getBookLatest = async () => {
+        try {
+            const response = await axios.get(`${API_URL}/Book/latest`);
+            return response;
+        } catch (error) {
+            throw error;
+        }
+    }
+export const getBookSearch = async (titlePart) => {
+    try {
+        // Sử dụng đối tượng params để gửi tham số truy vấn
+        const response = await axios.get(`${API_URL}/Book/search`, {
+            params: { titlePart }
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+

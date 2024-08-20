@@ -1,15 +1,43 @@
-import React from 'react';
-import book_suggest from '../imgs/Suggestion1.jpg';
-
+import React, { useEffect, useState } from 'react';
+import { getBooks } from '../services/apiService';
+import imgDefault from '../imgs/Suggestion1.jpg';
 function Suggestions() {
+    const [books, setBooks] = useState([]); // State để lưu trữ danh sách sách
+    const [loading, setLoading] = useState(true); // State để theo dõi trạng thái tải dữ liệu
+
+    useEffect(() => {
+        // Gọi API và cập nhật trạng thái
+        const fetchBooks = async () => {
+            try {
+                const response = await getBooks(); // Lấy dữ liệu từ API
+                setBooks(response.data); // Giả sử response.data chứa danh sách sách
+            } catch (error) {
+                console.error('Lỗi khi lấy dữ liệu sách:', error);
+            } finally {
+                setLoading(false); // Đặt loading thành false khi dữ liệu đã được tải xong
+            }
+        };
+
+        fetchBooks();
+    }, []);
+
+    if (loading) {
+        return <p>Đang tải dữ liệu...</p>;
+    }
+
     return (
         <div className="bg-bg_primary p-6 h-full rounded-lg">
-            <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>
-            <div className="grid grid-cols-4 gap-4 mt-4 h-full">
-                <img src={book_suggest} alt="Book 1" className="rounded-lg"/>
-                <img src={book_suggest} alt="Book 2" className="rounded-lg"/>
-                <img src={book_suggest} alt="Book 3" className="rounded-lg"/>
-                <img src={book_suggest} alt="Book 4" className="rounded-lg"/>
+            <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>  
+            <div className="grid grid-cols-4 gap-4 mt-4">
+                {books.map((book) => (
+                    <div key={book.id} className="flex items-center justify-center">
+                        <img
+                            src={book.imageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
+                            alt={book.title} // Sử dụng tên sách cho thuộc tính alt
+                            className="rounded-lg w-full h-auto"
+                        />
+                    </div>
+                ))}
 
             </div>
         </div>

@@ -80,5 +80,37 @@ namespace BookAPI.Controllers
             return Ok(await _context.Books.ToListAsync());
 
         }
+         [HttpGet("latest")]
+        public async Task<ActionResult<List<Book>>> GetLatestBooks()
+        {
+            var books = await _context.Books
+                .OrderByDescending(b => b.PublishedDate) // Sắp xếp theo ngày đăng giảm dần
+                .Take(4) // Lấy 4 sách
+                .ToListAsync();
+                
+            return Ok(books);
+        }
+        [HttpGet("search")]
+        public async Task<ActionResult<IEnumerable<Book>>> SearchBooks([FromQuery] string titlePart)
+        {
+            if (string.IsNullOrEmpty(titlePart))
+            {
+                return BadRequest("Search query cannot be empty.");
+            }
+
+            // Sử dụng EF.Functions.Like để thực hiện tìm kiếm không phân biệt chữ hoa chữ thường
+            var books = await _context.Books
+                .Where(b => EF.Functions.Like(b.Title, $"%{titlePart}%"))
+                .ToListAsync();
+
+            if (!books.Any())
+            {
+                return NotFound("No books found with the given title part.");
+            }
+
+            return Ok(books);
+        }
+
+
     }
 }
