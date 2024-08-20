@@ -8,7 +8,11 @@ module.exports = {
       colors: {
         bg_contactForm:"#EFEAD3",
         bg_primary:"#F6FFDE",
-        text_Secondary:"#265073"
+        text_Secondary:"#265073",
+        bg_RecColor:"#EFEAD3",
+      },
+      rotate: {
+        '270': '270deg',
       },
     },
   },
