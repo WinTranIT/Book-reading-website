@@ -8,6 +8,7 @@ import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/profile";
+import SearchBook from "./pages/SearchBook";
 
 function App() {
     return (
@@ -45,7 +46,14 @@ function App() {
                             </Layout>
                         }
                     />
-                    {/* Add other routes that should have Header and Footer */}
+                    <Route
+                        path="/search"
+                        element={
+                            <Layout>
+                                <SearchBook />
+                            </Layout>
+                        }
+                    />
                 </Routes>
             </div>
         </Router>

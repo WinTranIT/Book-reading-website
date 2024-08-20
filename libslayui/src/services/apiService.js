@@ -35,3 +35,15 @@ export const getBookLatest = async () => {
             throw error;
         }
     }
+export const getBookSearch = async (titlePart) => {
+    try {
+        // Sử dụng đối tượng params để gửi tham số truy vấn
+        const response = await axios.get(`${API_URL}/Book/search`, {
+            params: { titlePart }
+        });
+        return response;
+    } catch (error) {
+        throw error;
+    }
+}
+
