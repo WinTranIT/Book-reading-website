@@ -5,18 +5,12 @@ import avatar from '../imgs/z5459114771324_7fe84273b41fb6a6f3f6d9d9a96d06fb.jpg'
 import myfavorit from '../imgs/4e59232c36537e736e8a499031c8f2f1.png';
 import avabook from '../imgs/07202f5b88571c73f99be80eda4a8cfe.jpg';
 import '../css/profile.css';
+import logo from '../imgs/logo.png';
 
 function Profile() {
     let percentage = 90;
-    const data = [
-        { day: "Mon", hours: 2 },
-        { day: "Tue", hours: 4 },
-        { day: "Wed", hours: 3 },
-        { day: "Thu", hours: 2 },
-        { day: "Fri", hours: 3 },
-        { day: "Sat", hours: 4 },
-        { day: "Sun", hours: 1 },
-    ];
+
+    const percent = [3, 2, 3, 4, 5, 1.5, 2.5];
     return (
         <div className="container mt-6">
             <div className="row">
@@ -209,40 +203,128 @@ function Profile() {
             </div>
 
             <div className="row">
-                <div className="row">
-                    <h5>This Week Statistics</h5>
+                <div className="row  mt-5 pl-0">
+                    <h5 className='text-[#265073] text-left pl-0'>
+                        This Week Statistics
+                    </h5>
                 </div>
                 <div className="row">
-                    <div className="col">
-                        <div className="bg-beige p-6 rounded-lg shadow-lg">
-                            <div className="grid grid-cols-7 gap-4 items-end">
-                                {data.map((item, index) => (
-                                    <div key={index} className="flex flex-col items-center">
-                                        <div
-                                            className="w-8 bg-darkBlue rounded-t-lg"
-                                            style={{height: `${(item.hours / 5) * 100}%`}}
-                                        ></div>
-                                        <div className="w-8 h-32 bg-white rounded-b-lg border-t-2 border-beige"></div>
-                                        <span className="mt-2 text-gray-700 text-sm">{item.day}</span>
-                                    </div>
-                                ))}
-                            </div>
+                    <div className="col profile_row1 relative mr-4">
+                        <h6 className='text-left border-b-2 border-solid border-[#2F4F4F80] mb-4'>5h</h6>
+                        <h6 className='text-left border-b-2 border-solid border-[#2F4F4F80] mb-4'>4h</h6>
+                        <h6 className='text-left border-b-2 border-solid border-[#2F4F4F80] mb-4'>3h</h6>
+                        <h6 className='text-left border-b-2 border-solid border-[#2F4F4F80] mb-4'>2h</h6>
+                        <h6 className='text-left border-b-2 border-solid border-[#2F4F4F80] mb-4'>1h</h6>
+                        <h6 className='text-left border-b-2 border-solid border-[#2F4F4F80] mb-2'>0h</h6>
+                        <div className="row">
+                            <div className="col ml-12"><span>Mon</span></div>
+                            <div className="col"><span>Tue</span></div>
+                            <div className="col"><span>Wed</span></div>
+                            <div className="col"><span>Thu</span></div>
+                            <div className="col"><span>Fri</span></div>
+                            <div className="col"><span>Sat</span></div>
+                            <div className="col"><span>Sun</span></div>
+                        </div>
 
-                            {/* Trục thời gian */}
-                            <div className="mt-4 grid grid-rows-6 h-40">
-                                {[5, 4, 3, 2, 1, 0].map((hour, index) => (
-                                    <div key={index} className="flex justify-between items-center">
-                                        <span className="text-gray-700 text-sm">{hour}h</span>
-                                        <hr className="flex-grow border-t border-gray-300"/>
+                        <div
+                            className="profile_barchart_col profile_barchart_col1 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(0)/5)*100}%`}}
+                            ></div>
+                        </div>
+                        <div
+                            className="profile_barchart_col profile_barchart_col2 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(1)/5)*100}%`}}
+                            ></div>
+                        </div>
+                        <div
+                            className="profile_barchart_col profile_barchart_col3 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(2)/5)*100}%`}}
+                            ></div>
+                        </div>
+                        <div
+                            className="profile_barchart_col profile_barchart_col4 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(3)/5)*100}%`}}
+                            ></div>
+                        </div>
+                        <div
+                            className="profile_barchart_col profile_barchart_col5 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(4)/5)*100}%`}}
+                            ></div>
+                        </div>
+                        <div
+                            className="profile_barchart_col profile_barchart_col6 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(5)/5)*100}%`}}
+                            ></div>
+                        </div>
+                        <div
+                            className="profile_barchart_col profile_barchart_col7 transform rotate-270
+                            absolute bg-white rounded-full overflow-hidden shadow-inner"
+                        >
+                            <div
+                                className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
+                                style={{width: `${(percent.at(6)/5)*100}%`}}
+                            ></div>
+                        </div>
+
+                    </div>
+
+                    <div className="col-4 profile_row1">
+                        <div className="row">
+                            <div className="col">
+                                <div className="row">
+                                    <div className="col">
+                                        <img className='rounded-full ml-3' src={logo} alt='logo libslay'/>
                                     </div>
-                                ))}
+                                    <div className="col flex items-center">
+                                        <h5 className='text-left font-bold'>LIBSLAY</h5>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <h4 className='text-[30px] font-bold leading-[36px] text-[#265073] mt-4'>
+                                        Go Premium
+                                    </h4>
+                                    <span className='text-[16px] font-medium leading-[21px] text-[#00000080]'>
+                                        Explore 25k+ Books with lifetime membership
+                                    </span>
+                                </div>
+                                <div className="row">
+                                    <button className='profile_buy mt-4'>Buy!</button>
+                                </div>
+                            </div>
+                            <div className="col">
+                                <img className='h-[344px]' src={myfavorit} alt=''/>
                             </div>
                         </div>
                     </div>
-                    <div className="col"></div>
                 </div>
             </div>
-
+            <div className="row flex justify-end">
+                <button className='text-center profile_logout mr-5 mb-5'>Logout</button>
+            </div>
         </div>
 
     );

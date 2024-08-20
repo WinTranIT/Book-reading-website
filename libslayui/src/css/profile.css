@@ -55,3 +55,47 @@
     padding: 5px;
 
 }
+.profile_barchart_col{
+    height: 6%;
+    width: 33%;
+    bottom: 49%;
+}
+.profile_barchart_col1{
+    left: -3%;
+}
+.profile_barchart_col2{
+    left: 11%;
+}
+.profile_barchart_col3{
+    left: 24%;
+}
+.profile_barchart_col4{
+    left: 37%;
+}
+.profile_barchart_col5{
+    left: 51%;
+}
+.profile_barchart_col6{
+    left: 64%;
+}
+.profile_barchart_col7{
+    left: 77%;
+}
+.profile_buy{
+    padding: 5px 26px 5px 26px;
+    border-radius: 54px;
+    background-color: #265073;
+    color: white;
+    width: 45% !important;
+    margin-left: 17%;
+}
+.profile_logout{
+    color: white;
+    width: 10% !important;
+    margin-top: 2% !important;
+    font-weight: 500;
+    padding: 9px 32px 9px 32px;
+    border-radius: 46px;
+    background: #265073;
+    box-shadow: 0 4px 4px 0 #00000040;
+}

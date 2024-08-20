@@ -10,6 +10,9 @@ module.exports = {
         bg_primary:"#F6FFDE",
         text_Secondary:"#265073"
       },
+      rotate: {
+        '270': '270deg',
+      },
     },
   },
   plugins: [],
