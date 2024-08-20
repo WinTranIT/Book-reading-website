@@ -4,6 +4,7 @@ import faceimg from "../imgs/451112440_1898269430639898_843756217286475983_n.png
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faV} from "@fortawesome/free-solid-svg-icons";
 import '../css/header.css';
+import {useNavigate} from "react-router-dom";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,7 @@ function Header() {
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
+    const navigate = useNavigate();
 
     return (
         <div className="container">
@@ -101,7 +103,7 @@ function Header() {
                             </a>
                         </div>
 
-                        <div className='col cursor-pointer'>
+                        <div className='col cursor-pointer' onClick={() => navigate("/profile")}>
                             <img src={faceimg} alt='avatar' className='avatar rounded-full w-9 h-9'/>
                         </div>
                     </div>
