@@ -15,6 +15,10 @@ function Header() {
     };
     const navigate = useNavigate();
 
+    const handleClick = () => {
+        navigate('/home'); // Chuyển hướng đến route /home
+    };
+
     return (
         <div className="container">
             <div className="row">
@@ -28,7 +32,7 @@ function Header() {
                 <div className="col flex items-center">
                     <div className="row flex-1 items-center">
                         <div className='col relative group'>
-                            <a className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
+                            <a onClick={(e) => { e.preventDefault(); handleClick(); }} className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
                             >Home</a>
                         </div>
 
