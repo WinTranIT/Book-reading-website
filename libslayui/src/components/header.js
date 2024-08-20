@@ -19,12 +19,11 @@ function Header() {
         navigate('/home'); // Chuyển hướng đến route /home
     };
 
-
     return (
         <div className="container">
             <div className="row">
                 <div className="col-5">
-                    <div className="container_logoslay">
+                    <div className="container_logoslay cursor-pointer" onClick={() => navigate("/home")}>
                         <img src={logos} alt="logo"/>
                         <h3>LIBSLAY</h3>
                     </div>
@@ -108,7 +107,7 @@ function Header() {
                             </a>
                         </div>
 
-                        <div className='col cursor-pointer'>
+                        <div className='col cursor-pointer' onClick={() => navigate("/profile")}>
                             <img src={faceimg} alt='avatar' className='avatar rounded-full w-9 h-9'/>
                         </div>
                     </div>

@@ -6,10 +6,11 @@ import myfavorit from '../imgs/4e59232c36537e736e8a499031c8f2f1.png';
 import avabook from '../imgs/07202f5b88571c73f99be80eda4a8cfe.jpg';
 import '../css/profile.css';
 import logo from '../imgs/logo.png';
+import {useNavigate} from "react-router-dom";
 
 function Profile() {
     let percentage = 90;
-
+    const navigate = useNavigate();
     const percent = [3, 2, 3, 4, 5, 1.5, 2.5];
     return (
         <div className="container mt-6">
@@ -323,7 +324,12 @@ function Profile() {
                 </div>
             </div>
             <div className="row flex justify-end">
-                <button className='text-center profile_logout mr-5 mb-5'>Logout</button>
+                <button
+                    className='text-center profile_logout mr-5 mb-5'
+                    onClick={() => {sessionStorage.clear(); navigate("/")}}
+                >
+                    Logout
+                </button>
             </div>
         </div>
 
