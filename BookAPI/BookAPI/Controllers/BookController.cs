@@ -80,5 +80,15 @@ namespace BookAPI.Controllers
             return Ok(await _context.Books.ToListAsync());
 
         }
+        [HttpGet("latest")]
+        public async Task<ActionResult<List<Book>>> GetLatestBooks()
+        {
+            var books = await _context.Books
+                .OrderByDescending(b => b.PublishedDate) // Sắp xếp theo ngày đăng giảm dần
+                .Take(4) // Lấy 4 sách
+                .ToListAsync();
+
+            return Ok(books);
+        }
     }
 }
