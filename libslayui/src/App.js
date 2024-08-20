@@ -7,6 +7,8 @@ import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
+import BookList from "./components/BookList";
+import AdminPage from "./pages/AdminPage";
 
 function App() {
     return (
@@ -35,8 +37,16 @@ function App() {
                             </Layout>
                         }
                     />
+                    <Route path="/admin"
+                    element={
+                        <Layout>
+                            <AdminPage/>
+                        </Layout>
+                    }/>
+
                     {/* Add other routes that should have Header and Footer */}
                 </Routes>
+
             </div>
         </Router>
     );
