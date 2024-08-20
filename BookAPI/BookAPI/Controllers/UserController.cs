@@ -51,7 +51,7 @@ namespace BookAPI.Controllers
             {
                 return Ok(user);
             }
-            return Ok("Password not valid");
+            return BadRequest("Password not valid");
         }
     }
 }
