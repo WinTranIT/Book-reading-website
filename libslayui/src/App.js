@@ -9,7 +9,7 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
-
+import BookPage from "./pages/BookPage";
 function App() {
     return (
         <Router>
@@ -51,6 +51,14 @@ function App() {
                         element={
                             <Layout>
                                 <SearchBook />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/book"
+                        element={
+                            <Layout>
+                                <BookPage />
                             </Layout>
                         }
                     />
