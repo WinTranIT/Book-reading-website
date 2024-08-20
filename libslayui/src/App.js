@@ -7,46 +7,50 @@ import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/profile";
+import UploadFile from "./components/UploadFileToFirebase";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
     return (
-        <Router>
-            <div className="App">
-                <Routes>
-                    {/* Routes without Layout */}
-                    <Route path="/" element={<Login />} />
-                    <Route path="/signup" element={<Signup />} />
-
-                    {/* Routes with Layout */}
-                    <Route
-                        path="/contact"
-                        element={
-                            <Layout>
-                                <ContactUsPage />
-                            </Layout>
-                        }
-                    />
-                    {/* Routes with Layout */}
-                    <Route
-                        path="/home"
-                        element={
-                            <Layout>
-                                <HomePage />
-                            </Layout>
-                        }
-                    />
-                    <Route
-                        path="/profile"
-                        element={
-                            <Layout>
-                                <Profile />
-                            </Layout>
-                        }
-                    />
-                    {/* Add other routes that should have Header and Footer */}
-                </Routes>
-            </div>
-        </Router>
+        // <Router>
+        //     <div className="App">
+        //         <Routes>
+        //             {/* Routes without Layout */}
+        //             <Route path="/" element={<Login />} />
+        //             <Route path="/signup" element={<Signup />} />
+        //
+        //             {/* Routes with Layout */}
+        //             <Route
+        //                 path="/contact"
+        //                 element={
+        //                     <Layout>
+        //                         <ContactUsPage />
+        //                     </Layout>
+        //                 }
+        //             />
+        //             {/* Routes with Layout */}
+        //             <Route
+        //                 path="/home"
+        //                 element={
+        //                     <Layout>
+        //                         <HomePage />
+        //                     </Layout>
+        //                 }
+        //             />
+        //             <Route
+        //                 path="/profile"
+        //                 element={
+        //                     <Layout>
+        //                         <Profile />
+        //                     </Layout>
+        //                 }
+        //             />
+        //             {/* Add other routes that should have Header and Footer */}
+        //         </Routes>
+        //     </div>
+        // </Router>
+        <UploadFile/>
+        // <ForgotPassword/>
     );
 }
 

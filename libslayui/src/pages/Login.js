@@ -92,7 +92,11 @@ function Login() {
                     </form>
                     <img src={a3} alt="" className="a3"/>
                     <img src={a4} alt="" className="a4"/>
-                    <a href="#" className="forgoted">Forgot password</a>
+                    <a href="#" className="forgoted"
+                        
+                    >
+                        Forgot password
+                    </a>
                     <label className="label_login">Login with</label>
                     <div className="gafx_login">
                         <div>
@@ -109,7 +113,7 @@ function Login() {
                         </div>
                     </div>
                 </div>
-                <h5>New User? <a onClick={() => alert("sign up")} className="signup">Sign Up</a></h5>
+                <h5>New User? <a onClick={() => navigate("/signup")} className="signup">Sign Up</a></h5>
             </div>
             <img src={a1} alt="" className="a1"/>
             <img src={a2} alt="" className="a2"/>

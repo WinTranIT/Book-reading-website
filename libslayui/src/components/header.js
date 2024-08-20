@@ -19,7 +19,7 @@ function Header() {
         <div className="container">
             <div className="row">
                 <div className="col-5">
-                    <div className="container_logoslay">
+                    <div className="container_logoslay cursor-pointer" onClick={() => navigate("/home")}>
                         <img src={logos} alt="logo"/>
                         <h3>LIBSLAY</h3>
                     </div>
