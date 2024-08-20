@@ -4,6 +4,7 @@ import faceimg from "../imgs/451112440_1898269430639898_843756217286475983_n.png
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faV} from "@fortawesome/free-solid-svg-icons";
 import '../css/header.css';
+import {useNavigate} from "react-router-dom";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +13,12 @@ function Header() {
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate('/home'); // Chuyển hướng đến route /home
+    };
+
 
     return (
         <div className="container">
@@ -26,7 +33,7 @@ function Header() {
                 <div className="col flex items-center">
                     <div className="row flex-1 items-center">
                         <div className='col relative group'>
-                            <a className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
+                            <a onClick={(e) => { e.preventDefault(); handleClick(); }} className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
                             >Home</a>
                         </div>
 
