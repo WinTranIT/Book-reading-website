@@ -35,7 +35,7 @@ function Login() {
                 //  lưu session ở đây
                 sessionStorage.getItem(response.data)
                 // chuyển hướng trang home
-                navigate("/home");
+                navigate("/contact");
 
             } else {
                 alert("Login failed. Please try again.");

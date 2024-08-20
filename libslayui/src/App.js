@@ -7,6 +7,7 @@ import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
+import Profile from "./pages/profile";
 
 function App() {
     return (
@@ -32,6 +33,15 @@ function App() {
                         element={
                             <Layout>
                                 <HomePage />
+                            </Layout>
+                        }
+                    />
+                    {/* Routes with Layout */}
+                    <Route
+                        path="/profile"
+                        element={
+                            <Layout>
+                                <Profile />
                             </Layout>
                         }
                     />
