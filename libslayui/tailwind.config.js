@@ -10,6 +10,7 @@ module.exports = {
         bg_primary:"#F6FFDE",
         text_Secondary:"#265073",
         bg_RecColor:"#EFEAD3",
+        text_Logo:"#4A2C3D"
       },
       rotate: {
         '270': '270deg',
