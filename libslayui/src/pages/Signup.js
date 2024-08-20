@@ -44,7 +44,7 @@ function Signup() {
                 //  lưu session ở đây
                 sessionStorage.getItem(response.data)
                 // chuyển hướng trang home
-                navigate("/contact");
+                navigate("/home");
             }
         } catch (error) {
             if (error.status === 400) {
