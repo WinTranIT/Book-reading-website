@@ -1,5 +1,7 @@
 ﻿using BookAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 
 namespace BookAPI
 {
@@ -10,10 +12,13 @@ namespace BookAPI
             // Cấu hình các dịch vụ và các tùy chọn cho ứng dụng.
             var builder = WebApplication.CreateBuilder(args);
 
+            // Thêm dịch vụ gửi mail
+            builder.Services.Configure<SmtpSettings>(builder.Configuration.GetSection("SmtpSettings"));
+            builder.Services.AddTransient<IEmailService, EmailService>();
+
             // Thêm dịch vụ DbContext và chỉ định chuỗi kết nối từ appsettings.json
             builder.Services.AddDbContext<DataContext>(options =>
-                options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
-                new MySqlServerVersion(new Version(8, 0, 2)))); // Thay đổi phiên bản MySQL nếu cần
+                options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             // Thêm dịch vụ CORS với chính sách cho phép mọi nguồn
             builder.Services.AddCors(options =>
@@ -35,6 +40,8 @@ namespace BookAPI
             // Thêm dịch vụ để tạo tài liệu Swagger cho API,
             // cho phép bạn tự động tạo và hiển thị tài liệu API.
             builder.Services.AddSwaggerGen();
+
+            
 
             // Xây dựng đối tượng WebApplication từ WebApplicationBuilder,
             // sẵn sàng để xử lý các yêu cầu HTTP.
