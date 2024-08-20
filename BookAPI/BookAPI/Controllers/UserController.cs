@@ -36,7 +36,7 @@ namespace BookAPI.Controllers
             // bởi DbContext vào cơ sở dữ liệu
             await _context.SaveChangesAsync();
 
-            return Ok("User Register Successfully");
+            return Ok(user);
         }
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] RegisterModel model)
@@ -49,7 +49,7 @@ namespace BookAPI.Controllers
             }
             if (user.Password == model.Password)
             {
-                return Ok("Login success");
+                return Ok(user);
             }
             return Ok("Password not valid");
         }

@@ -8,12 +8,43 @@ import a2 from '../imgs/Group 15.png';
 import a3 from '../imgs/24122050_6904354 1.png';
 import a4 from '../imgs/24122051_6778944 1.png'
 import '../css/login.css'
+import {login} from "../services/apiService";
+import {useNavigate} from "react-router-dom";
+
 
 function Login() {
     const [eyeTikTak, setEyeTikTak] = useState(true);
     const togglePasswordVisibility = () => {
         setEyeTikTak(!eyeTikTak);
     };
+
+    // lưu trữ trạng thái thông tin người dùng nhập vào form login
+    const [email, setEmail] = useState('');
+    const[password, setPassword] = useState('');
+    // khởi tạo navigate
+    const navigate = useNavigate();
+    // tạo hàm xử lí sự kiện submit
+    const handleSubmit = async (e) => {
+        e.preventDefault(); // Thêm dòng này
+
+        const loginData = { email, password };
+        try {
+            const response = await login(loginData);
+            if (response.status === 200) {
+                alert("Login successful: " + response.data.email);
+                //  lưu session ở đây
+                sessionStorage.getItem(response.data)
+                // chuyển hướng trang home
+                navigate("/contact");
+
+            } else {
+                alert("Login failed. Please try again.");
+            }
+        } catch (error) {
+            alert("An error occurred. Please try again.");
+        }
+    };
+
     return (
         <div className="containerr">
             <div className="container_logo">
@@ -23,7 +54,7 @@ function Login() {
 
             <div className="container_form">
                 <div className="form">
-                    <form action="">
+                    <form onSubmit={handleSubmit}>
                         <div className="welcome">
                             <h2>Welcome Back!</h2>
                             <h3>Login to Continue</h3>
@@ -31,11 +62,21 @@ function Login() {
 
                         <div className="container_username">
                             <FontAwesomeIcon icon={faUser}/>
-                            <input type="email" placeholder="Enter Email" className="input_username" required/>
+                            <input
+                                type="email"
+                                placeholder="Enter Email"
+                                className="input_username" required
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
                         <div className="container_password">
                             <FontAwesomeIcon icon={faLock}/>
-                            <input type={eyeTikTak?"password":"text"} placeholder="Enter Password" className="input_password" required/>
+                            <input
+                                type={eyeTikTak?"password":"text"}
+                                placeholder="Enter Password"
+                                className="input_password" required
+                                onChange={(e)=> setPassword(e.target.value)}
+                            />
                             <button type="button" onClick={togglePasswordVisibility}>
                                 {
                                     (eyeTikTak)
