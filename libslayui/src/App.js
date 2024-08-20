@@ -5,6 +5,8 @@ import './App.css';
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
+import Footer from "./components/footer";
+import Profile from "./pages/profile";
 import Layout from "./components/Layout";
 import ReadingChallenge from "./components/ReadingChallenge";
 import TrendingBooks from "./components/TrendingBooks";
@@ -14,35 +16,17 @@ import HomePage from "./pages/HomePage";
 function App() {
   return (
     <div className="App">
-      {/*<Header/>*/}
+      <Header/>
       {/*<Login/>*/}
       {/* <Signup/>*/}
       {/*  <ContactUsPage/>*/}
-        <HomePage />
+        <Profile/>
+      {/*  <Login/>*/}
+      {/*  <Signup/>*/}
+      {/*  <Footer/>*/}
+      {/* <HomePage />*/}
     </div>
   );
-    // return (
-    //     <Router>
-    //         <div className="App">
-    //             <Routes>
-    //                 {/* Routes without Layout */}
-    //                 <Route path="/" element={<Login />} />
-    //                 <Route path="/signup" element={<Signup />} />
-    //
-    //                 {/* Routes with Layout */}
-    //                 <Route
-    //                     path="/contact"
-    //                     element={
-    //                         <Layout>
-    //                             <ContactUsPage />
-    //                         </Layout>
-    //                     }
-    //                 />
-    //                 {/* Add other routes that should have Header and Footer */}
-    //             </Routes>
-    //         </div>
-    //     </Router>
-    // );
 }
 
 export default App;

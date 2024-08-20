@@ -11,6 +11,9 @@ module.exports = {
         text_Secondary:"#265073",
         bg_RecColor:"#EFEAD3",
       },
+      rotate: {
+        '270': '270deg',
+      },
     },
   },
   plugins: [],
