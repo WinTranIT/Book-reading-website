@@ -54,5 +54,22 @@ namespace BookAPI.Controllers
             }
             return BadRequest("Password not valid");
         }
+
+        [HttpPut("change-password")]
+        public async Task<IActionResult> ChangePassword([FromBody] RegisterModel model)
+        {
+            // check email co trong csdl k 
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+            if (user == null)
+            {
+                return BadRequest("Email not valid");
+            }
+            user.Password = model.Password;
+            _context.Users.Update(user);
+            _context.SaveChanges();
+             return Ok("chang success!");
+            
+            
+        }
     }
 }

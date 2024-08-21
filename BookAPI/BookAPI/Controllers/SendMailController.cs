@@ -12,11 +12,11 @@ public class EmailController : ControllerBase
     }
 
     [HttpPost("send")]
-    public async Task<IActionResult> SendEmail([FromForm] string toEmail, [FromForm] string message)
+    public async Task<IActionResult> SendEmail([FromBody] SendMailModel sm)
     {
         try
         {
-            await _emailService.SendEmailAsync(toEmail, message);
+            await _emailService.SendEmailAsync(sm.Email, sm.Message);
             return Ok("Email sent successfully!");
         }
         catch (Exception ex)
