@@ -3,10 +3,11 @@ import { useLocation } from 'react-router-dom';
 import { getBookSearch } from "../services/apiService";
 import Search from "../components/Search";
 import imgDefault from "../imgs/Suggestion1.jpg";
-
+import {useNavigate} from "react-router-dom";
 const SearchBook = () => {
     const [results, setResults] = useState([]);
     const location = useLocation();
+    const navigate = useNavigate();
 
     // Extract query from URL
     const query = new URLSearchParams(location.search).get('query');
@@ -36,6 +37,7 @@ const SearchBook = () => {
                     results.map((result) => (
                         <div key={result.id} className="flex items-center justify-center">
                             <img
+                                onClick={() => navigate(`/book-detail?query=${result.bookId}`)}
                                 src={result.coverImageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
                                 alt={result.title} // Sử dụng tên sách cho thuộc tính alt
                                 className="rounded-lg w-full h-auto"

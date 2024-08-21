@@ -45,4 +45,14 @@ export const getBookSearch = async (titlePart) => {
         throw error;
     }
 }
+export const getBookDetail = async (id) => {
+    try {
+        // Đúng cách sử dụng template string để truyền tham số id vào URL
+        const response = await axios.get(`${API_URL}/Book/${id}`);
+        return response.data; // trả về data để sử dụng dễ dàng hơn ở component
+    } catch (error) {
+        throw error;
+    }
+}
+
 

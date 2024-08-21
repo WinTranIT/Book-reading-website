@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import BookTrending from '../imgs/BookTrending.jpg';
 import { getBookLatest } from '../services/apiService';
+import { useNavigate } from "react-router-dom";
 
 const TrendingBooks = () => {
     const [books, setBooks] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchBooks = async () => {
@@ -23,11 +25,12 @@ const TrendingBooks = () => {
 
     return (
         <div>
-            <h2 className=' text-text_Secondary font-bold text-center mb-3s'>Trending Books</h2>
+            <h2 className=' text-text_Secondary font-bold text-center mb-3'>New Books</h2>
             <div className='grid md:grid-cols-4 auto-rows-[150px] gap-4 mb-3'>
                 {books.map((item, i) => (
                     <div
                         key={i}
+                        onClick={() => navigate(`/book-detail?query=${item.bookId}`)}
                         className={`${boxStyle} ${
                             i === 2 || i === 4 ? 'md:col-span-2' : ''
                         } ${i === 1 ? 'md:col-span-3' : ''} ${i === 0 ? 'md:row-span-2' : ''}`}
