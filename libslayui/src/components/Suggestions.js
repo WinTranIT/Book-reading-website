@@ -29,19 +29,21 @@ function Suggestions() {
 
     return (
         <div className="bg-bg_primary p-6 h-full rounded-lg">
-            <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>  
+            <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>
             <div className="grid grid-cols-4 gap-4 mt-4">
-                {books.map((book) => (
+                {books.slice(0, 4).map((book) => ( // Chỉ lấy 4 cuốn sách đầu tiên
                     <div key={book.id} className="flex items-center justify-center">
                         <img
-                            onClick={() => navigate(`/book-detail?query=${book.bookId}`)}
-                            src= {book.coverImageUrl||imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
-                            alt={book.title} // Sử dụng tên sách cho thuộc tính alt
+                            onClick={() => {
+                                navigate(`/book-detail?query=${book.bookId}`);
+                                window.location.reload(); // Reload lại trang
+                            }}
+                            src={book.coverImageUrl || imgDefault}
+                            alt={book.title}
                             className="rounded-lg w-full h-auto"
                         />
                     </div>
                 ))}
-
             </div>
         </div>
     );

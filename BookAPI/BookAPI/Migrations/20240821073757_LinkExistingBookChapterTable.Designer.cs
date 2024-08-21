@@ -3,6 +3,7 @@ using System;
 using BookAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BookAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20240821073757_LinkExistingBookChapterTable")]
+    partial class LinkExistingBookChapterTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -63,29 +66,29 @@ namespace BookAPI.Migrations
 
             modelBuilder.Entity("BookAPI.Entities.BookChapter", b =>
                 {
-                    b.Property<int>("chapterid")
+                    b.Property<int>("ChapterId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("chapterid"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ChapterId"));
 
-                    b.Property<int>("bookid")
+                    b.Property<int>("BookId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("chapternumber")
+                    b.Property<int>("ChapterNumber")
                         .HasColumnType("integer");
 
-                    b.Property<string>("chaptertitle")
+                    b.Property<string>("ChapterTitle")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("content")
+                    b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.HasKey("chapterid");
+                    b.HasKey("ChapterId");
 
-                    b.ToTable("bookchapters", (string)null);
+                    b.ToTable("BookChapters", (string)null);
                 });
 
             modelBuilder.Entity("BookAPI.Entities.User", b =>

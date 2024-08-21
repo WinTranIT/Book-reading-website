@@ -11,6 +11,7 @@ import author from '../imgs/nguoi.jpg';
 import a0 from "../imgs/img-contact.png";
 import a1 from "../imgs/451112440_1898269430639898_843756217286475983_n.png";
 import {getBookDetail, getBookLatest} from "../services/apiService";
+import Suggestions from "../components/Suggestions";
 const BookPage = () => {
     const [rating, setRating] = useState(0);
     const [bookDetails, setBookDetails] = useState(null);
@@ -141,7 +142,7 @@ const BookPage = () => {
                                 </tr>
                                 <tr>
                                     <td><strong>Expected Publication</strong></td>
-                                    {/*<td>{new Date(bookDetails.publishedDate).toLocaleDateString()}, by (Book Store Name)</td>*/}
+                                    <td>21/08/2022, by LibSlay</td>
                                 </tr>
                                 <tr>
                                     <td><strong>ISBN</strong></td>
@@ -149,7 +150,7 @@ const BookPage = () => {
                                 </tr>
                                 <tr>
                                     <td><strong>Language</strong></td>
-                                    <td>English</td>
+                                    <td>Việt Nam</td>
                                 </tr>
                                 </tbody>
                             </table>
@@ -158,19 +159,7 @@ const BookPage = () => {
                         {/* Phần More Edition */}
                         <div className="more-edition mt-4">
                             <h4>More Suggestions</h4>
-                            <div className="d-flex justify-content-between">
-                                {books.map((edition, index) => (
-                                    <div className="text-center" key={index}>
-                                        <img src={edition.coverImageUrl || book} className="img-fluid"
-                                             alt={`${edition.format} Edition`}/>
-                                        <p className="mt-2">
-                                            <strong>{edition.format}</strong><br/>
-                                            {edition.name}<br/>
-                                            {edition.year}
-                                        </p>
-                                    </div>
-                                ))}
-                            </div>
+                            <Suggestions/>
                         </div>
 
                         {/* Phần thông tin người dùng */}
@@ -354,19 +343,7 @@ const BookPage = () => {
                 </div>
                 <div className="more-edition mt-4">
                     <h4>More Editions</h4>
-                    <div className="d-flex justify-content-between">
-                        {books.map((edition, index) => (
-                            <div className="text-center" key={index}>
-                                <img src={edition.coverImageUrl || book} className="img-fluid"
-                                     alt={`${edition.format} Edition`}/>
-                                <p className="mt-2">
-                                    <strong>{edition.format}</strong><br/>
-                                    {edition.name}<br/>
-                                    {edition.year}
-                                </p>
-                            </div>
-                        ))}
-                    </div>
+                   <Suggestions/>
                 </div>
                 <button style={{borderRadius: "25px", marginTop: "20px", textAlign: "center"}}
                         className="btn btn-primary">All Similar books
