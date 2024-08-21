@@ -21,8 +21,10 @@ function Login() {
     // lưu trữ trạng thái thông tin người dùng nhập vào form login
     const [email, setEmail] = useState('');
     const[password, setPassword] = useState('');
+
     // khởi tạo navigate
     const navigate = useNavigate();
+
     // tạo hàm xử lí sự kiện submit
     const handleSubmit = async (e) => {
         e.preventDefault(); // Thêm dòng này
@@ -36,7 +38,6 @@ function Login() {
                 sessionStorage.getItem(response.data)
                 // chuyển hướng trang home
                 navigate("/home");
-
             } else {
                 alert("Login failed. Please try again.");
             }
@@ -54,7 +55,7 @@ function Login() {
 
             <div className="container_form">
                 <div className="form">
-                    <form onSubmit={handleSubmit}>
+                    <form>
                         <div className="welcome">
                             <h2>Welcome Back!</h2>
                             <h3>Login to Continue</h3>
@@ -87,11 +88,15 @@ function Login() {
                                 }
                             </button>
                         </div>
-                        <button className="submit_login" type="submit">Login</button>
+                        <button onClick={handleSubmit} className="submit_login" type="submit">Login</button>
                     </form>
                     <img src={a3} alt="" className="a3"/>
                     <img src={a4} alt="" className="a4"/>
-                    <a className="forgoted">Forgot password</a>
+                    <a href="#" className="forgoted"
+                        
+                    >
+                        Forgot password
+                    </a>
                     <label className="label_login">Login with</label>
                     <div className="gafx_login">
                         <div>
@@ -108,7 +113,7 @@ function Login() {
                         </div>
                     </div>
                 </div>
-                <h5>New User? <a onClick={() => alert("sign up")} className="signup">Sign Up</a></h5>
+                <h5>New User? <a onClick={() => navigate("/signup")} className="signup">Sign Up</a></h5>
             </div>
             <img src={a1} alt="" className="a1"/>
             <img src={a2} alt="" className="a2"/>

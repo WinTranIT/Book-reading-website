@@ -43,8 +43,8 @@ function Signup() {
                 setMessage("User Register Successfully");
                 //  lưu session ở đây
                 sessionStorage.getItem(response.data)
-                // chuyển hướng trang home
-                navigate("/home");
+                // chuyển hướng trang đăng nhập
+                navigate("/");
             }
         } catch (error) {
             if (error.status === 400) {

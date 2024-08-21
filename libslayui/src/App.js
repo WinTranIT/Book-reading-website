@@ -1,4 +1,3 @@
-// src/App.js
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -11,7 +10,8 @@ import BookList from "./components/BookList";
 import AdminPage from "./pages/AdminPage";
 import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
-
+import BookPage from "./pages/BookPage";
+import ReadBookPage from "./pages/ReadBookPage";
 
 function App() {
     return (
@@ -63,6 +63,22 @@ function App() {
                         element={
                             <Layout>
                                 <SearchBook />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/book"
+                        element={
+                            <Layout>
+                                <BookPage />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/read"
+                        element={
+                            <Layout>
+                                <ReadBookPage />
                             </Layout>
                         }
                     />
