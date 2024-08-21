@@ -6,14 +6,12 @@ import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
-import BookList from "./components/BookList";
 import AdminPage from "./pages/AdminPage";
 import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
 import ForgotPassword from "./pages/ForgotPassword";
 import BookPage from "./pages/BookPage";
 import ReadBookPage from "./pages/ReadBookPage";
-import UploadFile from "./components/UploadFileToFirebase";
 
 function App() {
     return (
@@ -49,9 +47,6 @@ function App() {
                                    <AdminPage/>
                                </Layout>
                            }/>
-
-                    {/* Add other routes that should have Header and Footer */}
-                    {/* Routes with Layout */}
                     <Route
                         path="/profile"
                         element={
@@ -74,7 +69,7 @@ function App() {
                             <ForgotPassword/>}
                     />
                     <Route
-                        path="/book"
+                        path="/book-detail"
                         element={
                             <Layout>
                                 <BookPage/>
@@ -89,6 +84,7 @@ function App() {
                             </Layout>
                         }
                     />
+
                 </Routes>
 
             </div>
