@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useLocation, useNavigate} from 'react-router-dom';
 import '../css/BookPage.css'; // Đảm bảo bạn có file CSS này
 import Search from "../components/Search";
 // Import các hình ảnh
@@ -9,12 +10,49 @@ import book from '../imgs/book.jpg';
 import author from '../imgs/nguoi.jpg';
 import a0 from "../imgs/img-contact.png";
 import a1 from "../imgs/451112440_1898269430639898_843756217286475983_n.png";
+import {getBookDetail, getBookLatest} from "../services/apiService";
 const BookPage = () => {
     const [rating, setRating] = useState(0);
+    const [bookDetails, setBookDetails] = useState(null);
+    const [books, setBooks] = useState([]);
+
+    const location = useLocation();
+    const id = new URLSearchParams(location.search).get('query');
+
+
+    const navigate = useNavigate();
+    useEffect(() => {
+        const fetchBookDetails = async () => {
+            if (id) {
+                try {
+                    const data = await getBookDetail(id);
+                    setBookDetails(data);
+                } catch (error) {
+                    console.error('Error fetching book details:', error);
+                }
+            }
+        };
+
+        fetchBookDetails();
+    }, [id]);
+    useEffect(() => {
+        const fetchBooks = async () => {
+            try {
+                const response = await getBookLatest();
+                setBooks(response.data); // Lưu dữ liệu sách vào state
+            } catch (error) {
+                console.error('Failed to fetch books:', error);
+            }
+        };
+
+        fetchBooks();
+    }, []); // Chạy một lần khi component được mount
+
 
     const handleRatingClick = (newRating) => {
         setRating(newRating);
     };
+
     const reviews = [
         {
             id: 1,
@@ -36,21 +74,25 @@ const BookPage = () => {
         }
     ];
 
+
     return (
         <div className="book-page">
             <Search/>
-            {/* Nội dung trang chính */}
             <div className="container">
                 <div className="row">
-                    {/* Phần thông tin sách (Book Info) */}
                     <div className="col-md-4">
                         <div className="book-info-container">
                             <div className="book-image">
-                                <img src={book} alt="Book" className="img-fluid"/>
+                                {bookDetails && (
+                                    <img src={bookDetails.coverImageUrl} alt="Book" className="img-fluid"/>
+                                )}
                             </div>
                             <div className="book-actions">
                                 <button className="btn btn-primary">Currently Reading</button>
-                                <button className="btn btn-secondary">Want to Read</button>
+                                <button className="btn btn-secondary"
+                                        onClick={()=>navigate(`/read?id=${bookDetails.bookId}`)}>
+                                    Want to Read
+                                </button>
                                 <div className="rating-stars">
                                     {[...Array(5)].map((_, index) => (
                                         <button
@@ -68,54 +110,24 @@ const BookPage = () => {
                         </div>
                     </div>
 
-                    {/* Phần mô tả sách (Book Description) */}
                     <div className="col-md-8">
                         <div className="book-description">
-                            <h1 className="book-title">Book Name</h1>
-                            <p className="author-name">Author Name</p>
-                            <div className="d-flex align-items-center mb-3">
-                                <div style={{fontSize: "24px", marginRight: "10px"}}>
-                                    {/* Dùng icon hoặc các ngôi sao từ thư viện để hiển thị đánh giá */}
-                                    <span style={{color: "#f39c12"}}>★ ★ ★ ★ ☆</span>
-                                </div>
-                                <h4 style={{margin: "0"}}>4.5</h4>
-                                <span className="text-muted ml-2">654 Ratings · 756 Reviews</span>
-                            </div>
-
-                            <p className="content">
-                                <tbody>
-                                <tr>
-                                    <td>
-                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Ut porta Donec placerat nibh Nullam vitae sit tortor.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Donec vitae gravida Donec laoreet maximus Nullam massa tincidunt non dolor
-                                        adipiscing
-                                        odio risus Quisque tincidunt Donec turpis tortor.vel id tincidunt massa lacus
-                                        elit Sed convallis. at porta venenatis turpis In non, vitae
-                                        Lorem urna.
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td> Sed placerat felis, Morbi tincidunt In ex. Donec Sed non Cras malesuada
-                                        lobortis, non.
-                                        nibh Cras vehicula, porta faucibus tincidunt lacus, Donec ex viverra tempor
-                                        viverra
-                                        commodo vel
-                                    </td>
-                                </tr>
-
-
-                                </tbody>
-
-                            </p>
+                            {bookDetails ? (
+                                <>
+                                    <h1 className="book-title">{bookDetails.title}</h1>
+                                    <p className="author-name">{bookDetails.author}</p>
+                                    <div className="d-flex align-items-center mb-3">
+                                        <div style={{fontSize: "24px", marginRight: "10px"}}>
+                                            <span style={{color: "#f39c12"}}>★ ★ ★ ★ ☆</span>
+                                        </div>
+                                        <h4 style={{margin: "0"}}>4.5</h4>
+                                        <span className="text-muted ml-2">654 Ratings · 756 Reviews</span>
+                                    </div>
+                                    <p className="content">{bookDetails.description}</p>
+                                </>
+                            ) : (
+                                <p>Loading book details...</p>
+                            )}
                         </div>
 
                         {/* Phần This Edition */}
@@ -129,7 +141,7 @@ const BookPage = () => {
                                 </tr>
                                 <tr>
                                     <td><strong>Expected Publication</strong></td>
-                                    <td>MM/DD/YYYY, by (Book Store Name)</td>
+                                    {/*<td>{new Date(bookDetails.publishedDate).toLocaleDateString()}, by (Book Store Name)</td>*/}
                                 </tr>
                                 <tr>
                                     <td><strong>ISBN</strong></td>
@@ -145,26 +157,20 @@ const BookPage = () => {
 
                         {/* Phần More Edition */}
                         <div className="more-edition mt-4">
-                            <h4>More Edition</h4>
+                            <h4>More Suggestions</h4>
                             <div className="d-flex justify-content-between">
-                                <div className="text-center">
-                                    <img src={book} className="img-fluid" alt="eBook Edition"/>
-                                    <p className="mt-2"><strong>eBook</strong><br/>Edition Name<br/>Year</p>
-                                </div>
-                                <div className="text-center">
-                                    <img src={book} className="img-fluid" alt="Hardcover Edition"/>
-                                    <p className="mt-2"><strong>Hardcover</strong><br/>Edition Name<br/>Year</p>
-                                </div>
-                                <div className="text-center">
-                                    <img src={book} className="img-fluid" alt="Hardcover Edition"/>
-                                    <p className="mt-2"><strong>Hardcover</strong><br/>Edition Name<br/>Year</p>
-                                </div>
-                                <div className="text-center">
-                                    <img src={book} className="img-fluid" alt="Kindle Edition"/>
-                                    <p className="mt-2"><strong>Kindle</strong><br/>Edition Name<br/>Year</p>
-                                </div>
+                                {books.map((edition, index) => (
+                                    <div className="text-center" key={index}>
+                                        <img src={edition.coverImageUrl || book} className="img-fluid"
+                                             alt={`${edition.format} Edition`}/>
+                                        <p className="mt-2">
+                                            <strong>{edition.format}</strong><br/>
+                                            {edition.name}<br/>
+                                            {edition.year}
+                                        </p>
+                                    </div>
+                                ))}
                             </div>
-
                         </div>
 
                         {/* Phần thông tin người dùng */}
@@ -195,7 +201,7 @@ const BookPage = () => {
                                 <img src={author} alt="Author" className="author-image mr-4 rounded-circle"
                                      style={{width: "100px", height: "100px", objectFit: "cover"}}/>
                                 <div className="author-bio">
-                                    <h4 className="font-weight-bold">Author Name</h4>
+                                <h4 className="font-weight-bold">Author Name</h4>
                                     <p className="text-muted">No.of Books &nbsp;&nbsp;&nbsp; No.of Followers</p>
                                     <p>
                                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vehicula gravida
@@ -347,30 +353,28 @@ const BookPage = () => {
                     ))}
                 </div>
                 <div className="more-edition mt-4">
-                    <h4 style={{fontFamily: "'Sedgwick Ave', cursive"}}>Readers also Enjoyed</h4>
+                    <h4>More Editions</h4>
                     <div className="d-flex justify-content-between">
-                        <div className="text-center">
-                            <img src={book} className="img-fluid" alt="eBook Edition"/>
-                            <p className="mt-2"><strong>eBook</strong><br/>Edition Name<br/>Year</p>
-                        </div>
-                        <div className="text-center">
-                            <img src={book} className="img-fluid" alt="Hardcover Edition"/>
-                            <p className="mt-2"><strong>Hardcover</strong><br/>Edition Name<br/>Year</p>
-                        </div>
-                        <div className="text-center">
-                            <img src={book} className="img-fluid" alt="Hardcover Edition"/>
-                            <p className="mt-2"><strong>Hardcover</strong><br/>Edition Name<br/>Year</p>
-                        </div>
-                        <div className="text-center">
-                            <img src={book} className="img-fluid" alt="Kindle Edition"/>
-                            <p className="mt-2"><strong>Kindle</strong><br/>Edition Name<br/>Year</p>
-                        </div>
+                        {books.map((edition, index) => (
+                            <div className="text-center" key={index}>
+                                <img src={edition.coverImageUrl || book} className="img-fluid"
+                                     alt={`${edition.format} Edition`}/>
+                                <p className="mt-2">
+                                    <strong>{edition.format}</strong><br/>
+                                    {edition.name}<br/>
+                                    {edition.year}
+                                </p>
+                            </div>
+                        ))}
                     </div>
-                    <button style={{borderRadius:"25px", marginTop: "20px", textAlign: "center"}} className="btn btn-primary">All Similar books</button>
                 </div>
+                <button style={{borderRadius: "25px", marginTop: "20px", textAlign: "center"}}
+                        className="btn btn-primary">All Similar books
+                </button>
             </div>
-        </div>
-    );
+</div>
+)
+    ;
 };
 
 export default BookPage;

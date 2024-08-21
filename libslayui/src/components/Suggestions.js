@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { getBooks } from '../services/apiService';
 import imgDefault from '../imgs/Suggestion1.jpg';
+import {useNavigate} from "react-router-dom";
 function Suggestions() {
     const [books, setBooks] = useState([]); // State để lưu trữ danh sách sách
     const [loading, setLoading] = useState(true); // State để theo dõi trạng thái tải dữ liệu
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Gọi API và cập nhật trạng thái
@@ -32,6 +34,7 @@ function Suggestions() {
                 {books.map((book) => (
                     <div key={book.id} className="flex items-center justify-center">
                         <img
+                            onClick={() => navigate(`/book-detail?query=${book.bookId}`)}
                             src= {book.coverImageUrl||imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
                             alt={book.title} // Sử dụng tên sách cho thuộc tính alt
                             className="rounded-lg w-full h-auto"

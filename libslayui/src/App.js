@@ -47,9 +47,6 @@ function App() {
                             <AdminPage/>
                         </Layout>
                     }/>
-
-                    {/* Add other routes that should have Header and Footer */}
-                    {/* Routes with Layout */}
                     <Route
                         path="/profile"
                         element={
@@ -67,7 +64,7 @@ function App() {
                         }
                     />
                     <Route
-                        path="/book"
+                        path="/book-detail"
                         element={
                             <Layout>
                                 <BookPage />
