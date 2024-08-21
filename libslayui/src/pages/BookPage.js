@@ -167,21 +167,6 @@ const BookPage = () => {
 
                         </div>
 
-                        {/* Phần thông tin người dùng */}
-                        <div className="user-info mt-4">
-                            <a href="#" className="d-block mt-2">Show all Editions</a>
-                            <p>
-                                <img src={a0} alt="Currently Reading" className="rounded-circle" width="30"
-                                     height="30"/>
-                                481 people are currently reading
-                            </p>
-                            <p>
-                                <img src={a1} alt="Want to Read" className="rounded-circle" width="30"
-                                     height="30"/>
-                                189k people want to Read
-                            </p>
-                            <a href="#" className="d-block">More Information's</a>
-                        </div>
                     </div>
                 </div>
 

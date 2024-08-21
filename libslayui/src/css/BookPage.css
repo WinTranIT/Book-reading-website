@@ -175,32 +175,6 @@ body {
     text-decoration: underline;
 }
 
-/* Phần thông tin người dùng */
-.user-info mt-4{
-    margin-top: 20px;
-    background-color: #ECF2D5;
-    padding: 20px;
-
-}
-
-.user-info p {
-    font-size: 1rem;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    color: #333;
-}
-
-.user-info p img {
-    margin-right: 10px;
-}
-
-.user-info a {
-    color: #333;
-    font-size: 1rem;
-    text-decoration: underline;
-    text-align: left;
-}
 
 /* Phần tác giả */
 .author-info {
