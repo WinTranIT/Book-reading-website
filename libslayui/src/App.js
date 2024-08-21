@@ -12,6 +12,7 @@ import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
 import BookPage from "./pages/BookPage";
 import ReadBookPage from "./pages/ReadBookPage";
+import MyBook from "./pages/MyBook";
 
 function App() {
     return (
@@ -76,6 +77,14 @@ function App() {
                         element={
                             <Layout>
                                 <ReadBookPage />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/my-book"
+                        element={
+                            <Layout>
+                                <MyBook />
                             </Layout>
                         }
                     />
