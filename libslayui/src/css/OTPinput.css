@@ -1,0 +1,32 @@
+.container_getPassword{
+    position: absolute;
+    z-index: 3;
+    left: 140px;
+    top: 150px;
+    width: 505px;
+    background-color: white;
+    padding: 10px 15px 10px 24px;
+    border-radius: 25px;
+    align-items: center;
+    display: flex;
+}
+
+.input_Email{
+    margin-left: 40px;
+    outline: none;
+}
+.otp_submit{
+    left: 45%;
+    position: absolute;
+    color: white;
+    width: 27px !important;
+    margin-top: 30% !important;
+    font-weight: 500;
+    padding: 9px 92px 9px 32px;
+    border-radius: 46px;
+    background: #265073;
+    box-shadow: 0 4px 4px 0 #00000040;
+}
+.otp_submit:hover{
+    background: #6399c5;
+}

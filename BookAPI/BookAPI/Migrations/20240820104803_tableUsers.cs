@@ -10,7 +10,7 @@ namespace BookAPI.Migrations
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.InsertData(
+           /* migrationBuilder.InsertData(
             table: "Users",
             columns: new[] { "Id", "Email", "Password", "Role" }, // Danh sách các cột
             values: new object[,]
@@ -19,7 +19,7 @@ namespace BookAPI.Migrations
                     { 2, "hehe@hehe", "2", "user" },
                     { 3, "hihi@haha", "3", "user" }
                 }
-            );
+            );*/
         }
 
         /// <inheritdoc />

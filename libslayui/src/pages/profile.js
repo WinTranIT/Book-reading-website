@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {faGift, faPencil, faPlus, faStar} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import avatar from '../imgs/z5459114771324_7fe84273b41fb6a6f3f6d9d9a96d06fb.jpg';
@@ -12,6 +12,34 @@ function Profile() {
     let percentage = 90;
     const navigate = useNavigate();
     const percent = [3, 2, 3, 4, 5, 1.5, 2.5];
+    const [user, setUser] = useState({
+        name: 'Nguyen Van A',
+        email: 'nguyenvana@example.com',
+        phone: '0123456789',
+        address: '123 Đường ABC, Quận 1, TP.HCM',
+        password: '********',
+    });
+
+    const [isEditing, setIsEditing] = useState(false);
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser((prevUser) => ({
+            ...prevUser,
+            [name]: value,
+        }));
+    };
+
+    const handleSave = () => {
+        setIsEditing(false);
+        setIsPopupOpen(false);
+        alert('Profile updated successfully!');
+    };
+
+    const togglePopup = () => {
+        setIsPopupOpen(!isPopupOpen);
+    };
     return (
         <div className="container mt-6">
             <div className="row">
@@ -19,10 +47,116 @@ function Profile() {
                     <h2 className='text-[#265073]'>Profile</h2>
                     <button
                         className="editprofile boxshadow absolute right-[14%] bg-[#265073] rounded-[50px] text-white"
+                        onClick={togglePopup}
                     >
                         Edit Profile
                         <FontAwesomeIcon className="ml-1" icon={faPencil} style={{color: "#ffffff",}}/>
                     </button>
+                    {isPopupOpen && (
+                        <div className="fixed inset-0 flex items-center justify-center z-50">
+                            <div className="absolute inset-0 bg-black opacity-50"></div>
+                            <div className="bg-white rounded-lg shadow-lg p-6 z-10 max-w-lg w-full">
+                                <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700">Name</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={user.name}
+                                        onChange={handleChange}
+                                        disabled={!isEditing}
+                                        className={`mt-1 block w-full px-3 py-2 bg-white border ${
+                                            isEditing ? 'border-gray-300' : 'border-transparent'
+                                        } rounded-md shadow-sm focus:outline-none ${
+                                            isEditing ? 'focus:border-blue-500' : ''
+                                        } sm:text-sm`}
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={user.email}
+                                        onChange={handleChange}
+                                        disabled={!isEditing}
+                                        className={`mt-1 block w-full px-3 py-2 bg-white border ${
+                                            isEditing ? 'border-gray-300' : 'border-transparent'
+                                        } rounded-md shadow-sm focus:outline-none ${
+                                            isEditing ? 'focus:border-blue-500' : ''
+                                        } sm:text-sm`}
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700">Phone</label>
+                                    <input
+                                        type="text"
+                                        name="phone"
+                                        value={user.phone}
+                                        onChange={handleChange}
+                                        disabled={!isEditing}
+                                        className={`mt-1 block w-full px-3 py-2 bg-white border ${
+                                            isEditing ? 'border-gray-300' : 'border-transparent'
+                                        } rounded-md shadow-sm focus:outline-none ${
+                                            isEditing ? 'focus:border-blue-500' : ''
+                                        } sm:text-sm`}
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700">Address</label>
+                                    <input
+                                        type="text"
+                                        name="address"
+                                        value={user.address}
+                                        onChange={handleChange}
+                                        disabled={!isEditing}
+                                        className={`mt-1 block w-full px-3 py-2 bg-white border ${
+                                            isEditing ? 'border-gray-300' : 'border-transparent'
+                                        } rounded-md shadow-sm focus:outline-none ${
+                                            isEditing ? 'focus:border-blue-500' : ''
+                                        } sm:text-sm`}
+                                    />
+                                </div>
+
+                                <div className="mb-4">
+                                    <label className="block text-sm font-medium text-gray-700">Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        value={user.password}
+                                        onChange={handleChange}
+                                        disabled={!isEditing}
+                                        className={`mt-1 block w-full px-3 py-2 bg-white border ${
+                                            isEditing ? 'border-gray-300' : 'border-transparent'
+                                        } rounded-md shadow-sm focus:outline-none ${
+                                            isEditing ? 'focus:border-blue-500' : ''
+                                        } sm:text-sm`}
+                                    />
+                                </div>
+
+                                <div className="flex justify-end space-x-2">
+                                    <button
+                                        onClick={() => setIsEditing(!isEditing)}
+                                        className="px-4 py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600"
+                                    >
+                                        {isEditing ? 'Cancel' : 'Edit'}
+                                    </button>
+                                    {isEditing && (
+                                        <button
+                                            onClick={handleSave}
+                                            className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
+                                        >
+                                            Save
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
                 <div className="row profile_row1">
                     <div className="col-3">
