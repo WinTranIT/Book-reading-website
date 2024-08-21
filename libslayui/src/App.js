@@ -8,7 +8,8 @@ import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
 import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
-
+import BookPage from "./pages/BookPage";
+import ReadBookPage from "./pages/ReadBookPage";
 function App() {
     return (
         <Router>
@@ -50,6 +51,22 @@ function App() {
                         element={
                             <Layout>
                                 <SearchBook />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/book"
+                        element={
+                            <Layout>
+                                <BookPage />
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/read"
+                        element={
+                            <Layout>
+                                <ReadBookPage />
                             </Layout>
                         }
                     />
