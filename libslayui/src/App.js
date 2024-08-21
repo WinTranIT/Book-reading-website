@@ -6,10 +6,13 @@ import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
+import BookList from "./components/BookList";
+import AdminPage from "./pages/AdminPage";
 import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
 import BookPage from "./pages/BookPage";
 import ReadBookPage from "./pages/ReadBookPage";
+
 function App() {
     return (
         <Router>
@@ -37,6 +40,15 @@ function App() {
                             </Layout>
                         }
                     />
+
+                    <Route path="/admin"
+                    element={
+                        <Layout>
+                            <AdminPage/>
+                        </Layout>
+                    }/>
+
+                    {/* Add other routes that should have Header and Footer */}
                     {/* Routes with Layout */}
                     <Route
                         path="/profile"
@@ -71,6 +83,7 @@ function App() {
                         }
                     />
                 </Routes>
+
             </div>
         </Router>
     );

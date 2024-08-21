@@ -26,8 +26,8 @@ function Suggestions() {
     }
 
     return (
-        <div className="bg-bg_primary p-6 rounded-lg">
-            <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>
+        <div className="bg-bg_primary p-6 h-full rounded-lg">
+            <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>  
             <div className="grid grid-cols-4 gap-4 mt-4">
                 {books.map((book) => (
                     <div key={book.id} className="flex items-center justify-center">
@@ -38,6 +38,7 @@ function Suggestions() {
                         />
                     </div>
                 ))}
+
             </div>
         </div>
     );
