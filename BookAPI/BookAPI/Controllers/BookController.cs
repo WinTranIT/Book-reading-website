@@ -71,7 +71,7 @@ namespace BookAPI.Controllers
                 return NotFound("Book not found");
             }
             dbBook.Author = updateBook.Author;
-            dbBook.Description = updateBook.Description;    
+            dbBook.Description = updateBook.Description;
             dbBook.CoverImageUrl = updateBook.CoverImageUrl;
             dbBook.Title = updateBook.Title;
             dbBook.Genre = updateBook.Genre;
@@ -80,14 +80,14 @@ namespace BookAPI.Controllers
             return Ok(await _context.Books.ToListAsync());
 
         }
-         [HttpGet("latest")]
+        [HttpGet("latest")]
         public async Task<ActionResult<List<Book>>> GetLatestBooks()
         {
             var books = await _context.Books
                 .OrderByDescending(b => b.PublishedDate) // Sắp xếp theo ngày đăng giảm dần
                 .Take(4) // Lấy 4 sách
                 .ToListAsync();
-                
+
             return Ok(books);
         }
         [HttpGet("search")]
@@ -110,7 +110,19 @@ namespace BookAPI.Controllers
 
             return Ok(books);
         }
+        [HttpGet("chapters/{bookId}")]
+        public async Task<ActionResult<IEnumerable<BookChapter>>> GetChaptersByBookId(int bookId)
+        {
+            var chapters = await _context.BookChapters
+                                         .Where(c => c.BookId == bookId)
+                                         .OrderBy(c => c.ChapterNumber)
+                                         .ToListAsync();
 
-
+            if (chapters == null || !chapters.Any())
+            {
+                return NotFound(new { message = "No chapters found for this book." });
+            }
+            return Ok(chapters);
+        }
+        }
     }
-}

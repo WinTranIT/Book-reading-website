@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {queryByTestId} from "@testing-library/react";
 
 const API_URL = "https://localhost:7092/api";
 
@@ -54,5 +55,15 @@ export const getBookDetail = async (id) => {
         throw error;
     }
 }
+export const getChapters = async (id) => {
+    try {
+        // Đúng cách sử dụng template string để truyền tham số id vào URL
+        const response = await axios.get(`${API_URL}/Book/chapters/${id}`);
+        return response; // trả về data để sử dụng dễ dàng hơn ở component
+    } catch (error) {
+        throw error;
+    }
+}
+
 
 
