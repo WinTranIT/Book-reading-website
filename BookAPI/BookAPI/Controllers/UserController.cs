@@ -1,7 +1,6 @@
 ﻿using BookAPI.Data;
 using BookAPI.Entities;
 using BookAPI.Model;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,6 +16,7 @@ namespace BookAPI.Controllers
         {
             _context = context;
         }
+
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
@@ -38,6 +38,7 @@ namespace BookAPI.Controllers
 
             return Ok(user);
         }
+
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] RegisterModel model)
         {
