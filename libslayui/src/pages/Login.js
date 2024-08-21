@@ -9,7 +9,7 @@ import a3 from '../imgs/24122050_6904354 1.png';
 import a4 from '../imgs/24122051_6778944 1.png'
 import '../css/login.css'
 import {login} from "../services/apiService";
-import {useNavigate} from "react-router-dom";
+import {useLocation, useNavigate} from "react-router-dom";
 
 
 function Login() {
@@ -24,7 +24,6 @@ function Login() {
 
     // khởi tạo navigate
     const navigate = useNavigate();
-
     // tạo hàm xử lí sự kiện submit
     const handleSubmit = async (e) => {
         e.preventDefault(); // Thêm dòng này
@@ -92,7 +91,7 @@ function Login() {
                     </form>
                     <img src={a3} alt="" className="a3"/>
                     <img src={a4} alt="" className="a4"/>
-                    <a href="#" className="forgoted"
+                    <a className="forgoted"
                        onClick={() => navigate('/forgotpassword')}
                     >
                         Forgot password

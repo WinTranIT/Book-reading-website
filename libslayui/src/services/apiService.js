@@ -45,4 +45,20 @@ export const getBookSearch = async (titlePart) => {
         throw error;
     }
 }
+export const sendMail = async (titlePart) => {
+    try {
+        // Sử dụng đối tượng params để gửi tham số truy vấn
+        return await axios.post(`${API_URL}/Email/send`, titlePart);
+    } catch (error) {
+        throw error;
+    }
+}
+export const changePassword = async (titlePart) => {
+    try {
+        // Sử dụng đối tượng params để gửi tham số truy vấn
+        return await axios.put(`${API_URL}/User/change-password`, titlePart);
+    } catch (error) {
+        throw error;
+    }
+}
 

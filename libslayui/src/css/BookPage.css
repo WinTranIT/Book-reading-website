@@ -1,0 +1,447 @@
+body {
+    background-color: #ECF2D5;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.book-page {
+    padding: 20px;
+    background-color: #ECF2D5;
+}
+
+.navbar {
+    background-color: #ECF2D5;
+    padding: 10px 20px;
+}
+
+.navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.navbar .navbar-brand .logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.navbar .navbar-brand .logo-name {
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #555;
+    margin-right: 20px;
+}
+
+.navbar .profile-img img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.container {
+    margin-top: 20px;
+}
+
+/* Bố cục thông tin sách chính */
+.book-info-container {
+    background-color: #ECF2D5;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.book-info-container .book-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.book-info-container .book-actions {
+    margin-top: 20px;
+}
+
+.book-info-container .btn {
+    margin-bottom: 10px;
+    width: 100%;
+    border-radius: 25px;
+    font-weight: bold;
+}
+
+
+.star {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #ccc;
+}
+
+.star.selected {
+    color: gold;
+}
+
+/* Mô tả sách */
+.book-description {
+    background-color: #ECF2D5;
+    padding: 20px;
+    text-align: left;
+}
+
+.book-description .book-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.book-description .author-name {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 0rem;
+}
+
+.book-description .rating {
+    margin: 8px 0;
+}
+
+.book-description .description {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    padding: 8px 0;
+}
+
+
+/* Phần thông tin This Edition */
+.this-edition {
+    background-color: #ECF2D5;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+}
+.this-edition h4{
+    font-weight: bold;
+}
+.this-edition table {
+    width: 100%;
+    border-spacing: 0 10px;
+}
+
+.this-edition table td {
+    padding: 8px 0;
+    font-size: 1rem;
+    color: #333;
+    background-color: #ECF2D5;
+}
+
+/* Phần More Edition */
+.more-edition {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.more-edition h4 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.more-edition .text-center {
+    width: 23%;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.more-edition img {
+    max-width: 100%;
+    border-radius: 5px;
+}
+
+.more-edition p {
+    font-size: 0.95rem;
+    margin-top: 10px;
+    margin-bottom: 0;
+    color: #333;
+}
+
+.more-edition a {
+    color: #333;
+    font-size: 1rem;
+    text-decoration: underline;
+}
+
+/* Phần thông tin người dùng */
+.user-info mt-4{
+    margin-top: 20px;
+    background-color: #ECF2D5;
+    padding: 20px;
+
+}
+
+.user-info p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    color: #333;
+}
+
+.user-info p img {
+    margin-right: 10px;
+}
+
+.user-info a {
+    color: #333;
+    font-size: 1rem;
+    text-decoration: underline;
+    text-align: left;
+}
+
+/* Phần tác giả */
+.author-info {
+    background-color: #ECF2D5;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.author-info h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: black;
+}
+
+.author-info .author-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.author-info .author-bio {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Đánh giá và bình luận */
+.rating-reviews {
+    background-color: #ECF2D5;
+    padding: 20px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Sedgwick Ave', cursive;
+}
+
+.rating-reviews h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.rating-reviews span {
+    color: #f39c12;
+    font-size: 24px;
+    margin-bottom: 10px;
+
+}
+.rating-reviews .rating-summary {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.rating-reviews .rating-breakdown p {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+.rating-reviews .rounded-circle {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+
+}
+.rating-reviews .col-sm-3{
+    width: 60%; /* Chiều ngang phần tử sẽ chiếm 80% chiều ngang của phần tử chứa nó */
+    max-width: 200px; /* Đảm bảo rằng phần tử không vượt quá 600px chiều ngang */
+    min-width: 100px;
+}
+
+/* Bình luận từ cộng đồng */
+.community-reviews {
+    background-color: #ECF2D5;
+    padding: 20px;
+    margin-top: 20px;
+
+}
+
+.community-reviews h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.community-reviews .review {
+    margin-bottom: 15px;
+}
+
+.community-reviews .review p {
+    font-size: 1rem;
+    color: #555;
+}
+
+
+.progress {
+    width: 100%;
+    height: 10px;
+    background-color: gray;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    line-height: 10px;
+}
+.progress-bar-container {
+    display: flex;
+    align-items: center; /* Giúp chữ và progress căn giữa theo chiều dọc */
+    margin-bottom: 10px;
+}
+
+.stars {
+    width: 60px; /* Độ rộng của vùng hiển thị chữ sao */
+    text-align: right; /* Căn lề phải cho chữ sao */
+    margin-right: 10px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+/*Phần bình luận*/
+.reviews-section {
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    text-align: left;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #5a5a5a;
+    text-align: left;
+}
+
+
+.review-count {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+.review-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px 0;
+    border-bottom: 1px solid #e0e0d1;
+}
+
+.user-info {
+    text-align: left;
+    width: 150px; /* Fix the width for user-info */
+    margin-right: 15px; /* Add spacing between user-info and review-content */
+}
+
+.user-image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-info strong {
+    display: block;
+    font-size: 1rem;
+    margin-top: 10px;
+    color: #333;
+}
+
+.user-info p {
+    margin: 5px 0;
+    font-size: 0.875rem;
+    color: #888;
+}
+
+.user-info .btn-primary {
+    margin-top: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    padding: 5px 15px
+}
+
+.review-content {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.review-content .text-muted {
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-bottom: 10px;
+}
+
+.review-content p {
+    font-size: 0.9rem;
+    color: #444;
+}
+
+.review-actions {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.review-actions span {
+    margin-right: 15px;
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.review-actions .btn-link {
+    font-size: 0.875rem;
+    color: #007bff;
+    text-decoration: none;
+    padding: 0 5px;
+}
+
+.review-actions .btn-link:hover {
+    text-decoration: underline;
+}
+
+.review-item:last-child {
+    border-bottom: none;
+}
+.col-2 {
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo chiều dọc */
+    align-items: center; /* Căn giữa các phần tử theo chiều ngang */
+}
+
+.col-2 img {
+    margin-bottom: 10px; /* Khoảng cách giữa ảnh và nút */
+}
+
+.col-2 .btn {
+    width: 80px; /* Đặt chiều rộng của nút bằng với chiều rộng của ảnh */
+    margin-top: 10px;
+}

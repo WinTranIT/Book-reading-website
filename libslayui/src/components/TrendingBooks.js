@@ -23,8 +23,8 @@ const TrendingBooks = () => {
 
     return (
         <div>
-            <h2 className='text-text_Secondary font-bold text-center mb-4'>Trending Books</h2>
-            <div className='grid md:grid-cols-4 auto-rows-[250px] gap-4 mb-3'>
+            <h2 className=' text-text_Secondary font-bold text-center mb-3s'>Trending Books</h2>
+            <div className='grid md:grid-cols-4 auto-rows-[150px] gap-4 mb-3'>
                 {books.map((item, i) => (
                     <div
                         key={i}

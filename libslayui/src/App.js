@@ -6,9 +6,14 @@ import Signup from "./pages/Signup";
 import ContactUsPage from "./pages/ContactUsPage";
 import Layout from "./components/Layout";
 import HomePage from "./pages/HomePage";
+import BookList from "./components/BookList";
+import AdminPage from "./pages/AdminPage";
 import Profile from "./pages/profile";
 import SearchBook from "./pages/SearchBook";
 import ForgotPassword from "./pages/ForgotPassword";
+import BookPage from "./pages/BookPage";
+import ReadBookPage from "./pages/ReadBookPage";
+import UploadFile from "./components/UploadFileToFirebase";
 
 function App() {
     return (
@@ -37,6 +42,15 @@ function App() {
                             </Layout>
                         }
                     />
+
+                    <Route path="/admin"
+                           element={
+                               <Layout>
+                                   <AdminPage/>
+                               </Layout>
+                           }/>
+
+                    {/* Add other routes that should have Header and Footer */}
                     {/* Routes with Layout */}
                     <Route
                         path="/profile"
@@ -57,12 +71,29 @@ function App() {
                     <Route
                         path="/forgotpassword"
                         element={
-                            <ForgotPassword/>
+                            <ForgotPassword/>}
+                    />
+                    <Route
+                        path="/book"
+                        element={
+                            <Layout>
+                                <BookPage/>
+                            </Layout>
+                        }
+                    />
+                    <Route
+                        path="/read"
+                        element={
+                            <Layout>
+                                <ReadBookPage/>
+                            </Layout>
                         }
                     />
                 </Routes>
+
             </div>
         </Router>
+
     );
 }
 
