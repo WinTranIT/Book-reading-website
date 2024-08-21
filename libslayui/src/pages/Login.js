@@ -93,7 +93,7 @@ function Login() {
                     <img src={a3} alt="" className="a3"/>
                     <img src={a4} alt="" className="a4"/>
                     <a href="#" className="forgoted"
-                        
+                       onClick={() => navigate('/forgotpassword')}
                     >
                         Forgot password
                     </a>
