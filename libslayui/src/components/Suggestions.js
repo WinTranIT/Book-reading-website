@@ -32,7 +32,7 @@ function Suggestions() {
                 {books.map((book) => (
                     <div key={book.id} className="flex items-center justify-center">
                         <img
-                            src={book.imageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
+                            src= {book.coverImageUrl||imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
                             alt={book.title} // Sử dụng tên sách cho thuộc tính alt
                             className="rounded-lg w-full h-auto"
                         />

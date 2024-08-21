@@ -36,7 +36,7 @@ const SearchBook = () => {
                     results.map((result) => (
                         <div key={result.id} className="flex items-center justify-center">
                             <img
-                                src={result.imageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
+                                src={result.coverImageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
                                 alt={result.title} // Sử dụng tên sách cho thuộc tính alt
                                 className="rounded-lg w-full h-auto"
                             />
