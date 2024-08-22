@@ -31,7 +31,7 @@ const MyBook = () => {
     return (
         <div className="container">
             <Search />
-            <div className="grid grid-cols-4 gap-4"> {/* Sử dụng grid với 4 cột */}
+            <div className="grid grid-cols-4 gap-8"> {/* Sử dụng grid với 4 cột */}
                 {books.length > 0 ? (
                     books.map((result) => (
                         <div key={result.id} className="flex items-center justify-center">
@@ -39,7 +39,7 @@ const MyBook = () => {
                                 onClick={() => navigate(`/book-detail?query=${result.bookId}`)}
                                 src={result.coverImageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
                                 alt={result.title} // Sử dụng tên sách cho thuộc tính alt
-                                className="rounded-lg w-full h-auto"
+                                className="rounded-lg w-full h-full"
                             />
                         </div>
                     ))

@@ -37,7 +37,7 @@ function Search() {
                     />
                     <button
                         type="submit"
-                        className="text-white absolute right-2.5 bottom-2.5 bg-bg_contactForm hover:bg-bg_RecColor font-medium rounded-full text-sm px-4 py-2 dark:bg-text_Secondary dark:hover:bg-gray-700">
+                        className="text-white absolute right-2.5 bottom-2.5 bg-text_Secondary hover:bg-gray-700 font-medium rounded-full text-sm px-4 py-2 dark:bg-text_Secondary dark:hover:bg-gray-700">
                         Search
                     </button>
                 </div>

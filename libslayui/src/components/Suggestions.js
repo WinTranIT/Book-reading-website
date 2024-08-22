@@ -28,8 +28,8 @@ function Suggestions() {
     }
 
     return (
-        <div className="bg-bg_primary p-6 h-full rounded-lg">
-            <div className="grid grid-cols-4 gap-4 mt-4">
+        <div className="bg-bg_primary p-4 h-full rounded-lg">
+            <div className="grid grid-cols-4 gap-4">
                 {books.slice(0,8).map((book) => ( // Chỉ lấy 4 cuốn sách đầu tiên
                     <div key={book.id} className="flex items-center justify-center">
                         <img
@@ -39,7 +39,7 @@ function Suggestions() {
                             }}
                             src={book.coverImageUrl || imgDefault}
                             alt={book.title}
-                            className="rounded-lg w-full h-auto"
+                            className="rounded-lg w-full h-full"
                         />
                     </div>
                 ))}
