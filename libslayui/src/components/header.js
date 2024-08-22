@@ -21,8 +21,8 @@ function Header() {
 
     return (
         <div className="container">
-            <div className="row">
-                <div className="col-5">
+            <div className="row flex justify-evenly">
+                <div className="col-4">
                     <div className="container_logoslay cursor-pointer" onClick={() => navigate("/home")}>
                         <img src={logos} alt="logo"/>
                         <h3>LIBSLAY</h3>
@@ -36,13 +36,13 @@ function Header() {
                             >Home</a>
                         </div>
 
-                        <div className='col-3 relative group'>
+                        <div className='col-2 relative group'>
                             <a onClick={() => navigate(`/my-book`)}
                                 className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
                             >My Books</a>
                         </div>
 
-                        <div className='col-3 relative group inline-block text-left' >
+                        <div className='col-2 relative group inline-block text-left' >
                             <button
                                 onClick={toggleDropdown}
                                 className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
@@ -100,14 +100,18 @@ function Header() {
                             )}
                         </div>
 
-                        <div className='col-3 relative group'>
-                            <a href="#"
+                        <div className='col-2 relative group'>
+                            <a onClick={() => navigate(`/contact`)}
                                className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
-                            >Contact US
-                            </a>
+                            >Contact Us</a>
+                        </div>
+                        <div className='col-2 relative group'>
+                            <a onClick={() => navigate(`/admin`)}
+                               className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
+                            >Admin</a>
                         </div>
 
-                        <div className='col cursor-pointer' onClick={() => navigate("/profile")}>
+                        <div className='col cursor-pointer right-0' onClick={() => navigate("/profile")}>
                             <img src={faceimg} alt='avatar' className='avatar rounded-full w-9 h-9'/>
                         </div>
                     </div>
