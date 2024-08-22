@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ProjectNet\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj": {}
+    "D:\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj": {}
   },
   "projects": {
-    "D:\\ProjectNet\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj": {
+    "D:\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ProjectNet\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj",
+        "projectUniqueName": "D:\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj",
         "projectName": "BookAPI",
-        "projectPath": "D:\\ProjectNet\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj",
-        "packagesPath": "C:\\Users\\MSI\\.nuget\\packages\\",
-        "outputPath": "D:\\ProjectNet\\Book-reading-website\\BookAPI\\BookAPI\\obj\\",
+        "projectPath": "D:\\Book-reading-website\\BookAPI\\BookAPI\\BookAPI.csproj",
+        "packagesPath": "C:\\Users\\TUAN\\.nuget\\packages\\",
+        "outputPath": "D:\\Book-reading-website\\BookAPI\\BookAPI\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\MSI\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\TUAN\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -92,7 +88,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,8 +1,10 @@
 ﻿using BookAPI.Data;
 using BookAPI.Entities;
+using BookAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Timers;
 
 namespace BookAPI.Controllers
 {
@@ -21,7 +23,7 @@ namespace BookAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<List<Book>>> GetBooks()
         {
-            var books = await _context.Books.ToListAsync();
+            var books = await _context.Books.AsNoTracking().ToListAsync();
             return Ok(books);
         }
         [HttpGet("{id}")]
@@ -36,18 +38,54 @@ namespace BookAPI.Controllers
             return Ok(book);
         }
         [HttpPost]
-        public async Task<ActionResult<Book>> AddBook(Book book)
+        public async Task<ActionResult<Book>> AddBook(AddBookModel book)
         {
             if (book == null)
             {
-                return BadRequest("Book not valid");
+                return BadRequest("Book data is required.");
             }
 
-            _context.Books.Add(book);
-            await _context.SaveChangesAsync();
+            // Kiểm tra tính hợp lệ của dữ liệu đầu vào
+            if (string.IsNullOrWhiteSpace(book.Title) ||
+                string.IsNullOrWhiteSpace(book.Author) ||
+                book.PublishedDate == null ||  // Kiểm tra nếu PublishedDate không hợp lệ
+                string.IsNullOrWhiteSpace(book.Genre) ||
+                string.IsNullOrWhiteSpace(book.CoverImage))
+            {
+                return BadRequest("Incomplete book data.");
+            }
 
-            return CreatedAtAction(nameof(GetBookById), new { id = book.BookId }, book);
+            var maxBookId = await _context.Books.AnyAsync()
+                ? await _context.Books.MaxAsync(b => b.BookId)
+                : 0;
+
+            var newBook = new Book
+            {
+                BookId = maxBookId + 1,
+                Title = book.Title,
+                Author = book.Author,
+                PublishedDate = book.PublishedDate.ToUniversalTime(),
+                Description = book.Description,
+                Genre = book.Genre,
+                CoverImageUrl = book.CoverImage
+            };
+
+            _context.Books.Add(newBook);
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception ex)
+            {
+                // Thêm logging chi tiết hơn
+                Console.Error.WriteLine($"Error saving book: {ex.Message}");
+                return StatusCode(StatusCodes.Status500InternalServerError, $"Internal server error: {ex.Message}");
+            }
+
+            return Ok("Add success!");
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBook(int id)
         {
@@ -62,6 +100,7 @@ namespace BookAPI.Controllers
 
             return Ok("Delete success");
         }
+
         [HttpPut]
         public async Task<IActionResult> UpdateBook(Book updateBook)
         {

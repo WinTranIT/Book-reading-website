@@ -19,7 +19,17 @@ export const login = async (loginData) => {
         throw error;
     }
 }
+<<<<<<< HEAD
+export const addBook = async (bookData) => {
+    try {
+        return await axios.post(`${API_URL}/Book`, bookData);
+    } catch (error) {
+        throw error;
+    }
+}
+=======
 //phuong thuc dung de goi api
+>>>>>>> d1ea59177d74f81c7b2fc3bf35ebd182141a951e
 export const getBooks = async () => {
     try {
         const response = await axios.get(`${API_URL}/Book`);
@@ -96,6 +106,15 @@ export const getChapters = async (id) => {
         // Đúng cách sử dụng template string để truyền tham số id vào URL
         const response = await axios.get(`${API_URL}/Book/chapters/${id}`);
         return response; // trả về data để sử dụng dễ dàng hơn ở component
+    } catch (error) {
+        throw error;
+    }
+}
+export const deleteBook = async (id) => {
+    try {
+        // Đúng cách sử dụng template string để truyền tham số id vào URL
+        const response = await axios.delete(`${API_URL}/Book/${id}`);
+        return response.data; // trả về data để sử dụng dễ dàng hơn ở component
     } catch (error) {
         throw error;
     }
