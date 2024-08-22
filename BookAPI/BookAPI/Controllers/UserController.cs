@@ -97,6 +97,7 @@ namespace BookAPI.Controllers
             user.name = model.name;
             user.address = model.address;
             user.urlavatar = model.urlavatar;
+            user.birthday = model.birthday;
             _context.Users.Update(user);
             _context.SaveChanges();
             return Ok("chang success!");
