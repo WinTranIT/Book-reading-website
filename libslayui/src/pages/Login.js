@@ -33,9 +33,9 @@ function Login() {
         try {
             const response = await login(loginData);
             if (response.status === 200) {
-                alert("Login successful: " + response.data.email);
-                //  lưu session ở đây
-                sessionStorage.getItem(response.data)
+                // Lưu trữ đối tượng vào sessionStorage
+                sessionStorage.setItem("user", JSON.stringify(response.data));
+                alert("Login successful: " + response.data.name);
                 // chuyển hướng trang home
                 navigate("/home");
             } else {

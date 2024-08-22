@@ -11,6 +11,9 @@ const ReadBookPage = () => {
     const [book, setBook] = useState(null);
     const location = useLocation();
     const id = new URLSearchParams(location.search).get('id');
+    const [fontSize, setFontSize] = useState(16); // Kích thước chữ mặc định là 16px
+    const increaseFontSize = () => setFontSize((prevSize) => prevSize + 2);
+    const decreaseFontSize = () => setFontSize((prevSize) => (prevSize > 8 ? prevSize - 2 : prevSize)); // Giới hạn nhỏ nhất là 8px
 
     useEffect(() => {
         const fetchBook = async () => {
@@ -70,6 +73,15 @@ const ReadBookPage = () => {
                             <path d="M23,12A11,11,0,0,1,4.963,20.451l-.256.256A1,1,0,0,1,4,21a.987.987,0,0,1-.383-.076A1,1,0,0,1,3,20V18a1,1,0,0,1,1-1H6a1,1,0,0,1,.707,1.707l-.322.322A9,9,0,1,0,3,12a9.107,9.107,0,0,0,.18,1.8,1,1,0,0,1-1.96.4A11,11,0,1,1,23,12ZM12,5a1,1,0,0,0-1,1v6a1,1,0,0,0,1,1h5a1,1,0,0,0,0-2H13V6A1,1,0,0,0,12,5Z"></path>
                         </svg>
                     </button>
+                    {/* Nút điều chỉnh kích thước chữ */}
+                    <div className="d-flex justify-content-end my-3">
+                        <button style={{marginLeft: "10px", width:"40px", height:"40px"}} className="btn btn-outline-primary btn-circle me-2" onClick={decreaseFontSize}>
+                            -
+                        </button>
+                        <button style={{width:"40px", height:"40px"}} className="btn btn-outline-primary btn-circle " onClick={increaseFontSize}>
+                            +
+                        </button>
+                    </div>
                 </div>
 
                 <hr className="my-4" />
@@ -98,7 +110,8 @@ const ReadBookPage = () => {
                             borderRadius: '10px',
                             height: '800px',
                             overflowY: 'scroll',
-                            textAlign: 'left'
+                            textAlign: 'left',
+                            fontSize: `${fontSize}px` // Áp dụng kích thước chữ cho phần nội dung
                         }}>
 
                             <p>{chapters[currentPage - 1]?.content || 'Loading content...'}</p>

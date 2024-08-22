@@ -9,4 +9,5 @@ public class ChangeInforUserModel
     public string address { get; set; }
     public string urlavatar { get; set; }
     public string Password { get; set; }
+    public string birthday  { get; set; }
 }
