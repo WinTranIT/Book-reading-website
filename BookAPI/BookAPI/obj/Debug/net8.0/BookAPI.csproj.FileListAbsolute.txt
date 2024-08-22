@@ -122,8 +122,6 @@ D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Microsoft.En
 D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
 D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Microsoft.OpenApi.dll
 D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Mono.TextTemplating.dll
-D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\MySqlConnector.dll
-D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Pomelo.EntityFrameworkCore.MySql.dll
 D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.Swagger.dll
 D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\projectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
@@ -417,3 +415,5 @@ E:\dotnet\project_dotnet\BookAPI\BookAPI\bin\Debug\net8.0\Npgsql.dll
 E:\dotnet\project_dotnet\BookAPI\BookAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 D:\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Npgsql.dll
 D:\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+D:\ProjectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Npgsql.dll
+D:\ProjectNet\Book-reading-website\BookAPI\BookAPI\bin\Debug\net8.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll

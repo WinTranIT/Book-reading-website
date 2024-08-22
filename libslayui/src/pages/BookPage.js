@@ -65,19 +65,19 @@ const BookPage = () => {
 
 
     return (
-        <div className="book-page">
+        <div className="book-page ">
             <Search/>
-            <div className="container">
+            <div className="container ">
                 <div className="row">
                     <div className="col-md-4">
                         <div className="book-info-container">
                             <div className="book-image">
                                 {bookDetails && (
-                                    <img src={bookDetails.coverImageUrl} alt="Book" className="img-fluid"/>
+                                    <img src={bookDetails.coverImageUrl} alt="Book" className="h-full w-full"/>
                                 )}
                             </div>
                             <div className="book-actions">
-                                <button className="btn btn-primary">Currently Reading</button>
+                                <button className=" btn btn-primary">Currently Reading</button>
                                 <button className="btn btn-secondary"
                                         onClick={()=>navigate(`/read?id=${bookDetails.bookId}`)}>
                                     Want to Read
@@ -150,21 +150,6 @@ const BookPage = () => {
                             <Suggestions/>
                         </div>
 
-                        {/* Phần thông tin người dùng */}
-                        <div className="user-info mt-4">
-                            <a href="#" className="d-block mt-2">Show all Editions</a>
-                            <p>
-                                <img src={a0} alt="Currently Reading" className="rounded-circle" width="30"
-                                     height="30"/>
-                                481 people are currently reading
-                            </p>
-                            <p>
-                                <img src={a1} alt="Want to Read" className="rounded-circle" width="30"
-                                     height="30"/>
-                                189k people want to Read
-                            </p>
-                            <a href="#" className="d-block">More Information's</a>
-                        </div>
                     </div>
                 </div>
 
@@ -334,7 +319,7 @@ const BookPage = () => {
                     <Suggestions/>
                 </div>
                 <button style={{borderRadius: "25px", marginTop: "20px", textAlign: "center"}}
-                        className="btn btn-primary">All Similar books
+                        className="bg-text_Secondary px-4 py-2 text-white hover:bg-gray-700 ">All Similar books
                 </button>
             </div>
 </div>

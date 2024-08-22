@@ -92,6 +92,13 @@ function App() {
                                 <MyBook />
                             </Layout>
                         }
+                    /> <Route
+                        path="/contact-us"
+                        element={
+                            <Layout>
+                                <ContactUsPage/>
+                            </Layout>
+                        }
                     />
                 </Routes>
 

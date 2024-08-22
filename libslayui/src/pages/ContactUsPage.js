@@ -6,7 +6,7 @@ const ContactUsPage = () => {
 
         <div className="bg-bg_primary-50 min-h-screen flex justify-center items-center p-4">
             <div className="grid">
-                <h1 className=" font-bold text-text_Secondary">Contact Us</h1>
+                <h1 className=" font-bold text-text_Secondary">CONTACT US</h1>
 
                 {/*Left Section*/}
                 <div className="bg-bg_primary p-8 rounded-md flex">

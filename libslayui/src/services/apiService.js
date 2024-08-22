@@ -19,6 +19,7 @@ export const login = async (loginData) => {
         throw error;
     }
 }
+<<<<<<< HEAD
 export const addBook = async (bookData) => {
     try {
         return await axios.post(`${API_URL}/Book`, bookData);
@@ -26,6 +27,9 @@ export const addBook = async (bookData) => {
         throw error;
     }
 }
+=======
+//phuong thuc dung de goi api
+>>>>>>> d1ea59177d74f81c7b2fc3bf35ebd182141a951e
 export const getBooks = async () => {
     try {
         const response = await axios.get(`${API_URL}/Book`);
