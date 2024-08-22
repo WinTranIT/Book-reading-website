@@ -37,7 +37,7 @@ function Header() {
                         </div>
 
                         <div className='col-3 relative group'>
-                            <a
+                            <a onClick={() => navigate(`/my-book`)}
                                 className="hover-underline text-xl font-medium no-underline cursor-pointer text-black"
                             >My Books</a>
                         </div>
