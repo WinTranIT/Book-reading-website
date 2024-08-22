@@ -8,6 +8,7 @@ import {useNavigate} from "react-router-dom";
 
 function Header() {
     const [isOpen, setIsOpen] = useState(false);
+    const storedUserSession =JSON.parse(sessionStorage.getItem("user"));
 
     // Hàm để thay đổi trạng thái dropdown
     const toggleDropdown = () => {
@@ -108,7 +109,7 @@ function Header() {
                         </div>
 
                         <div className='col cursor-pointer' onClick={() => navigate("/profile")}>
-                            <img src={faceimg} alt='avatar' className='avatar rounded-full w-9 h-9'/>
+                            <img src={storedUserSession.urlavatar} alt='avatar' className='avatar rounded-full w-9 h-9'/>
                         </div>
                     </div>
                 </div>

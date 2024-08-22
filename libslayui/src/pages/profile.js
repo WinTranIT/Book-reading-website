@@ -304,7 +304,7 @@ function Profile() {
                                 </div>
                                 <div className="col bg-[#265073] rounded-[10px] boxshadow ml-[40px]">
                                     <div className="row">
-                                        <span className='font-semibold leading-9 text-xl'>
+                                        <span className='font-semibold leading-9 text-[20px]'>
                                             Currently Reading
                                         </span>
                                     </div>
