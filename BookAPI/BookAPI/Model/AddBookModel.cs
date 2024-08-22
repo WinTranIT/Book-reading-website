@@ -7,7 +7,7 @@
             public string Title { get; set; }
             public string Genre { get; set; }
             public DateTime PublishedDate { get; set; }
-            public IFormFile CoverImage { get; set; }
+            public string CoverImage { get; set; }
 
     }
 }
