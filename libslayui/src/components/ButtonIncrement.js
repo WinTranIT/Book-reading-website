@@ -13,7 +13,7 @@ const ButtonIncrement = () => {
 
     return (
         <form className="w-1/3 mx-auto">
-            <div className="flex flex-row justify-center bg-white rounded-md p-2">
+            <div className="flex flex-row justify-center bg-white rounded-full p-2 ">
                 <button
                     type="button"
                     id="decrement-button"

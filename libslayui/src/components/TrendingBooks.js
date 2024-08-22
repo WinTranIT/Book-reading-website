@@ -38,14 +38,14 @@ const TrendingBooks = () => {
                     >
                         <div className='bg-black bg-opacity-50 backdrop-blur w-full h-full absolute inset-0 z-0'></div>
                         <div className='flex flex-col items-center z-10 text-center text-white'>
-                            <img className="h-16 w-16 rounded-full mb-2" src={item.coverImageUrl || BookTrending} alt={item.title} />
-                            <h2 className='text-lg text-black font-bold'>{item.title}</h2>
-                            <span className='text-black'>{item.author}</span>
-                            <div className='flex justify-center mt-2'>
+                            <img className="h-14 w-14 rounded-full mb-2" src={item.coverImageUrl || BookTrending} alt={item.title} />
+                            <h2 className='text-sm text-bg_primary font-semiboldbold m-0'>{item.title}</h2>
+                            <span className='text-bg_primary text-sm'>{item.author}</span>
+                            <div className='flex justify-center'>
                                 {[...Array(5)].map((_, index) => (
                                     <svg
                                         key={index}
-                                        className='w-5 h-5 text-yellow-400'
+                                        className='w-3 h-4 text-yellow-400'
                                         fill='currentColor'
                                         viewBox='0 0 20 20'
                                     >

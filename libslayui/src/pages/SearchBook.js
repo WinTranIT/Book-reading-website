@@ -40,7 +40,7 @@ const SearchBook = () => {
                                 onClick={() => navigate(`/book-detail?query=${result.bookId}`)}
                                 src={result.coverImageUrl || imgDefault} // Thay đổi đường dẫn hình ảnh theo dữ liệu API
                                 alt={result.title} // Sử dụng tên sách cho thuộc tính alt
-                                className="rounded-lg w-full h-auto"
+                                className="rounded-lg w-full h-full"
                             />
                         </div>
                     ))
