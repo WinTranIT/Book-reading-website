@@ -1,45 +1,86 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import {faGift, faPencil, faPlus, faStar} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import avatar from '../imgs/z5459114771324_7fe84273b41fb6a6f3f6d9d9a96d06fb.jpg';
 import myfavorit from '../imgs/4e59232c36537e736e8a499031c8f2f1.png';
 import avabook from '../imgs/07202f5b88571c73f99be80eda4a8cfe.jpg';
 import '../css/profile.css';
 import logo from '../imgs/logo.png';
 import {useNavigate} from "react-router-dom";
+import {changeInformation} from "../services/apiService";
+import {getDownloadURL, ref, uploadBytesResumable} from "firebase/storage";
+import {storage} from "../Firebase/firebaseConfig";
 
 function Profile() {
     let percentage = 90;
     const navigate = useNavigate();
     const percent = [3, 2, 3, 4, 5, 1.5, 2.5];
-    const [user, setUser] = useState({
-        name: 'Nguyen Van A',
-        email: 'nguyenvana@example.com',
-        phone: '0123456789',
-        address: '123 Đường ABC, Quận 1, TP.HCM',
-        password: '********',
-    });
-
+    const [storedUserSession,setStoredUserSession ] = useState(JSON.parse(sessionStorage.getItem("user")));
     const [isEditing, setIsEditing] = useState(false);
     const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setUser((prevUser) => ({
-            ...prevUser,
-            [name]: value,
-        }));
-    };
-
-    const handleSave = () => {
+    const [password, setPassword] = useState(storedUserSession.password);
+    const [phone, setPhone] = useState(storedUserSession.phone);
+    const [name, setName] = useState(storedUserSession.name);
+    const [address, setAddress] = useState(storedUserSession.address);
+    const [urlavatar, setUrlavatar] = useState(storedUserSession.urlavatar);
+    const [birthday, setBirthday] = useState(storedUserSession.birthday);
+    const handleChangeInfor = async (e) => {
         setIsEditing(false);
         setIsPopupOpen(false);
-        alert('Profile updated successfully!');
+        
+        const dataChange = {email:storedUserSession.email,
+            password, phone, name, address, urlavatar, birthday};
+        try {
+            const response = await changeInformation(dataChange);
+            if (response.status === 200) {
+                alert("Change information successful!");
+                const updatedUser = {
+                    ...storedUserSession, name: name, password: password,
+                    phone: phone, address: address, urlavatar: urlavatar, birthday: birthday
+                };
+                //Cập nhật lưu trữ đối tượng vào sessionStorage
+                sessionStorage.setItem("user", JSON.stringify(updatedUser));
+                setStoredUserSession(JSON.parse(sessionStorage.getItem("user")));
+            } else {
+                alert("Login failed. Please try again.");
+            }
+        } catch (error) {
+            alert("An error occurred. Please try again.");
+        }
     };
 
     const togglePopup = () => {
         setIsPopupOpen(!isPopupOpen);
     };
+
+    const [file, setFile] = useState(null);
+    const [progress, setProgress] = useState(0);
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+    };
+
+    const handleUpload = () => {
+        const storageRef = ref(storage, `files/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+            "state_changed",
+            (snapshot) => {
+                const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setProgress(progress);
+                console.log('Upload is ' + progress + '% done');
+            },
+            (error) => {
+                console.error("Upload failed:", error);
+            },
+            () => {
+                getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+                    setUrlavatar(downloadURL);
+                    console.log('File available at', downloadURL);
+                });
+            }
+        );
+    }
     return (
         <div className="container mt-6">
             <div className="row">
@@ -57,14 +98,29 @@ function Profile() {
                             <div className="absolute inset-0 bg-black opacity-50"></div>
                             <div className="bg-white rounded-lg shadow-lg p-6 z-10 max-w-lg w-full">
                                 <h2 className="text-2xl font-bold mb-4">Edit Profile</h2>
-
+                                <div>
+                                    <input type="file" onChange={handleFileChange}/>
+                                    <button className='bg-amber-600' onClick={handleUpload}>Upload</button>
+                                    <div className="flex items-center">
+                                        {/* Thanh tiến trình */}
+                                        <div
+                                            className="relative w-full h-6 bg-white rounded-full overflow-hidden shadow-inner">
+                                            <div
+                                                className="absolute top-0 left-0 h-full bg-green-500 rounded-full transition-all duration-500"
+                                                style={{width: `${Math.round(progress)}%`}}
+                                            ></div>
+                                        </div>
+                                        {/* Phần trăm */}
+                                        <span className="ml-2 text-black font-semibold">{Math.round(progress)}%</span>
+                                    </div>
+                                </div>
                                 <div className="mb-4">
                                     <label className="block text-sm font-medium text-gray-700">Name</label>
                                     <input
                                         type="text"
                                         name="name"
-                                        value={user.name}
-                                        onChange={handleChange}
+                                        value={name + ''}
+                                        onChange={(e) => setName(e.target.value)}
                                         disabled={!isEditing}
                                         className={`mt-1 block w-full px-3 py-2 bg-white border ${
                                             isEditing ? 'border-gray-300' : 'border-transparent'
@@ -75,12 +131,12 @@ function Profile() {
                                 </div>
 
                                 <div className="mb-4">
-                                    <label className="block text-sm font-medium text-gray-700">Email</label>
+                                    <label className="block text-sm font-medium text-gray-700">Birthday</label>
                                     <input
-                                        type="email"
+                                        type="text"
                                         name="email"
-                                        value={user.email}
-                                        onChange={handleChange}
+                                        value={birthday + ''}
+                                        onChange={(e) => setBirthday(e.target.value)}
                                         disabled={!isEditing}
                                         className={`mt-1 block w-full px-3 py-2 bg-white border ${
                                             isEditing ? 'border-gray-300' : 'border-transparent'
@@ -93,10 +149,10 @@ function Profile() {
                                 <div className="mb-4">
                                     <label className="block text-sm font-medium text-gray-700">Phone</label>
                                     <input
-                                        type="text"
+                                        type="phone"
                                         name="phone"
-                                        value={user.phone}
-                                        onChange={handleChange}
+                                        value={phone}
+                                        onChange={(e) => setPhone(e.target.value)}
                                         disabled={!isEditing}
                                         className={`mt-1 block w-full px-3 py-2 bg-white border ${
                                             isEditing ? 'border-gray-300' : 'border-transparent'
@@ -111,8 +167,8 @@ function Profile() {
                                     <input
                                         type="text"
                                         name="address"
-                                        value={user.address}
-                                        onChange={handleChange}
+                                        value={address + ''}
+                                        onChange={(e) => setAddress(e.target.value)}
                                         disabled={!isEditing}
                                         className={`mt-1 block w-full px-3 py-2 bg-white border ${
                                             isEditing ? 'border-gray-300' : 'border-transparent'
@@ -127,8 +183,8 @@ function Profile() {
                                     <input
                                         type="password"
                                         name="password"
-                                        value={user.password}
-                                        onChange={handleChange}
+                                        value={password + ''}
+                                        onChange={(e) => setPassword(e.target.value)}
                                         disabled={!isEditing}
                                         className={`mt-1 block w-full px-3 py-2 bg-white border ${
                                             isEditing ? 'border-gray-300' : 'border-transparent'
@@ -147,7 +203,7 @@ function Profile() {
                                     </button>
                                     {isEditing && (
                                         <button
-                                            onClick={handleSave}
+                                            onClick={handleChangeInfor}
                                             className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                                         >
                                             Save
@@ -163,7 +219,7 @@ function Profile() {
                         <div className="row profile_avatar">
                             <img
                                 className="boxshadow p-0 rounded-[20px] ml-[18px]"
-                                src={avatar} alt="avatar"/>
+                                src={storedUserSession.urlavatar} alt="avatar"/>
                         </div>
                         <div className="row">
                             <span className='text-left text-xl font-medium leading-9 mt-2'>
@@ -171,17 +227,18 @@ function Profile() {
                             </span>
                         </div>
                         <div className="row">
-                            <span className='text-left mt-3'> Good man, Bến Tre, Việt Nam</span>
+                            <span className='text-left mt-3'> {storedUserSession.address}</span>
                         </div>
                         <div className="row flex">
 
-                            <span className='text-left mt-2'><FontAwesomeIcon icon={faGift}/> Birthday: 15/08/2003</span>
+                            <span className='text-left mt-2'><FontAwesomeIcon
+                                icon={faGift}/> Birthday: {storedUserSession.birthday}</span>
                         </div>
                     </div>
 
                     <div className="col">
                         <div className="row">
-                            <h5 className='text-left ml-5'>WinTran IT</h5>
+                            <h5 className='text-left ml-5'>{storedUserSession.name}</h5>
                         </div>
                         <div className="row ml-5 mt-3">
                             <div className="col bg-[#A4C0ED] rounded-[10px] boxshadow ml-[40px]">
@@ -275,7 +332,7 @@ function Profile() {
 
                     <div className="col-3 relative ">
                         <img src={myfavorit} alt="slay"
-                        className='profile_col3'
+                             className='profile_col3'
                         />
                         <button className='profile_button_add_favorit'>
                             <FontAwesomeIcon className='profile_icon_add' icon={faPlus} style={{color: "#ffffff",}}/>
@@ -329,7 +386,7 @@ function Profile() {
                     </div>
                     <div className="col-2">
                         <button
-                        className='mt-5 boxshadow px-[32px] py-[9px] rounded-[10px] bg-[#265073] text-white'
+                            className='mt-5 boxshadow px-[32px] py-[9px] rounded-[10px] bg-[#265073] text-white'
                         >
                             Continue
                         </button>
@@ -367,7 +424,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(0)/5)*100}%`}}
+                                style={{width: `${(percent.at(0) / 5) * 100}%`}}
                             ></div>
                         </div>
                         <div
@@ -376,7 +433,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(1)/5)*100}%`}}
+                                style={{width: `${(percent.at(1) / 5) * 100}%`}}
                             ></div>
                         </div>
                         <div
@@ -385,7 +442,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(2)/5)*100}%`}}
+                                style={{width: `${(percent.at(2) / 5) * 100}%`}}
                             ></div>
                         </div>
                         <div
@@ -394,7 +451,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(3)/5)*100}%`}}
+                                style={{width: `${(percent.at(3) / 5) * 100}%`}}
                             ></div>
                         </div>
                         <div
@@ -403,7 +460,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(4)/5)*100}%`}}
+                                style={{width: `${(percent.at(4) / 5) * 100}%`}}
                             ></div>
                         </div>
                         <div
@@ -412,7 +469,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(5)/5)*100}%`}}
+                                style={{width: `${(percent.at(5) / 5) * 100}%`}}
                             ></div>
                         </div>
                         <div
@@ -421,7 +478,7 @@ function Profile() {
                         >
                             <div
                                 className="absolute top-0 left-0 h-full bg-[#265073] rounded-full transition-all duration-500"
-                                style={{width: `${(percent.at(6)/5)*100}%`}}
+                                style={{width: `${(percent.at(6) / 5) * 100}%`}}
                             ></div>
                         </div>
 
@@ -460,7 +517,10 @@ function Profile() {
             <div className="row flex justify-end">
                 <button
                     className='text-center profile_logout mr-5 mb-5'
-                    onClick={() => {sessionStorage.clear(); navigate("/")}}
+                    onClick={() => {
+                        sessionStorage.removeItem("user");
+                        navigate("/")
+                    }}
                 >
                     Logout
                 </button>
