@@ -39,7 +39,7 @@ function UploadFile() {
     return (
         <div>
             <input type="file" onChange={handleFileChange} />
-            <button onClick={handleUpload}>Upload</button>
+            <button className='bg-amber-600' onClick={handleUpload}>Upload</button>
             <p>Progress: {Math.round(progress)}%</p>
             {downloadURL && <a href={downloadURL}>Download File</a>}
         </div>

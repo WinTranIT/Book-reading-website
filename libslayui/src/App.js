@@ -12,6 +12,7 @@ import SearchBook from "./pages/SearchBook";
 import ForgotPassword from "./pages/ForgotPassword";
 import BookPage from "./pages/BookPage";
 import ReadBookPage from "./pages/ReadBookPage";
+import MyBook from "./pages/MyBook";
 
 function App() {
     return (
@@ -84,7 +85,14 @@ function App() {
                             </Layout>
                         }
                     />
-
+                    <Route
+                        path="/my-book"
+                        element={
+                            <Layout>
+                                <MyBook />
+                            </Layout>
+                        }
+                    />
                 </Routes>
 
             </div>
