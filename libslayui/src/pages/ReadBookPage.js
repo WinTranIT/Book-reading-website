@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from "../components/Search";
-import bookImage from "../imgs/book.jpg"; // Đổi tên biến để không bị trùng tên
 import { getBookDetail, getChapters } from "../services/apiService";
 import { useLocation } from "react-router-dom";
-import TrendingBooks from "../components/TrendingBooks";
 import Suggestions from "../components/Suggestions";
 
 const ReadBookPage = () => {

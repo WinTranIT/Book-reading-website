@@ -12,6 +12,7 @@ import a0 from "../imgs/img-contact.png";
 import a1 from "../imgs/451112440_1898269430639898_843756217286475983_n.png";
 import {getBookDetail, getBookLatest} from "../services/apiService";
 import Suggestions from "../components/Suggestions";
+import TrendingBooks from "../components/TrendingBooks";
 const BookPage = () => {
     const [rating, setRating] = useState(0);
     const [bookDetails, setBookDetails] = useState(null);
@@ -36,19 +37,6 @@ const BookPage = () => {
 
         fetchBookDetails();
     }, [id]);
-    useEffect(() => {
-        const fetchBooks = async () => {
-            try {
-                const response = await getBookLatest();
-                setBooks(response.data); // Lưu dữ liệu sách vào state
-            } catch (error) {
-                console.error('Failed to fetch books:', error);
-            }
-        };
-
-        fetchBooks();
-    }, []); // Chạy một lần khi component được mount
-
 
     const handleRatingClick = (newRating) => {
         setRating(newRating);
@@ -343,7 +331,7 @@ const BookPage = () => {
                 </div>
                 <div className="more-edition mt-4">
                     <h4>More Editions</h4>
-                   <Suggestions/>
+                    <Suggestions/>
                 </div>
                 <button style={{borderRadius: "25px", marginTop: "20px", textAlign: "center"}}
                         className="btn btn-primary">All Similar books
