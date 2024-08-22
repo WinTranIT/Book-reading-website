@@ -20,7 +20,8 @@ function HomePage(){
                 <div className="col-span-6">
                     <TrendingBooks />
                     <div className="">
-                    <Suggestions />
+                        <h2 className="text-text_Secondary text-left font-bold">Suggestions</h2>
+                        <Suggestions/>
                     </div>
                 </div>
 
