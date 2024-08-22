@@ -1,13 +1,7 @@
-import React, {useState} from 'react';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEye, faEyeSlash, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
-import {faApple, faFacebook, faGoogle, faXTwitter} from "@fortawesome/free-brands-svg-icons";
-import {register} from "../services/apiService";
+import React from 'react';
 import logo from '../imgs/logo.png';
 import a1 from '../imgs/10028970 1.png';
 import a2 from '../imgs/Group 15.png';
-import a3 from '../imgs/24122050_6904354 1.png';
-import a4 from '../imgs/24122051_6778944 1.png';
 import '../css/signup.css';
 import OTPInput from "../components/OTPinput";
 

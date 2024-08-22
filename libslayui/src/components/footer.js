@@ -113,7 +113,7 @@ function Footer() {
                                             <span className="text-white text-[13px]">Download on The</span>
                                         </div>
                                         <div className="row">
-                                            <span className="text-white text-2xl">App Store</span>
+                                            <span className="text-white text-xl">App Store</span>
                                         </div>
                                     </div>
                                 </div>

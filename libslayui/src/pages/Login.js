@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEye, faEyeSlash, faLock, faUser} from "@fortawesome/free-solid-svg-icons";
 import {faApple, faFacebook, faGoogle, faXTwitter} from "@fortawesome/free-brands-svg-icons";
@@ -9,10 +9,11 @@ import a3 from '../imgs/24122050_6904354 1.png';
 import a4 from '../imgs/24122051_6778944 1.png'
 import '../css/login.css'
 import {login} from "../services/apiService";
-import {useNavigate} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 
 function Login() {
+
     const [eyeTikTak, setEyeTikTak] = useState(true);
     const togglePasswordVisibility = () => {
         setEyeTikTak(!eyeTikTak);
@@ -24,7 +25,6 @@ function Login() {
 
     // khởi tạo navigate
     const navigate = useNavigate();
-
     // tạo hàm xử lí sự kiện submit
     const handleSubmit = async (e) => {
         e.preventDefault(); // Thêm dòng này
@@ -45,7 +45,6 @@ function Login() {
             alert("An error occurred. Please try again.");
         }
     };
-
     return (
         <div className="containerr">
             <div className="container_logo">
@@ -92,8 +91,8 @@ function Login() {
                     </form>
                     <img src={a3} alt="" className="a3"/>
                     <img src={a4} alt="" className="a4"/>
-                    <a href="#" className="forgoted"
-                        
+                    <a className="forgoted"
+                       onClick={() => navigate('/forgotpassword')}
                     >
                         Forgot password
                     </a>
